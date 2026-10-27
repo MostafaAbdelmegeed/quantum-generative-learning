@@ -1,0 +1,33 @@
+{
+  "completed": {
+    "bars_stripes-s137-iqp-dense-multiscale-0shots": "43adbfab43b5541cfe5978fc08689f4311a849eeb48e711cb8dfd5c950042af9",
+    "bars_stripes-s137-iqp-line-multiscale-0shots": "35730683458597cf71b89e5a318ca46a7ba3ce5b61efcc82881deb4c6b928b0e",
+    "bars_stripes-s137-iqp-tree-multiscale-0shots": "ca7eda4f32f64cc3e23470f33ecb8a03877c524d694299fa1848a6366460d1b1",
+    "bars_stripes-s2026-iqp-dense-multiscale-0shots": "442eb1e7e49f18b2af063b73559aef2ae877d4b6c46e251a6c78cfdaf8887fd7",
+    "bars_stripes-s2026-iqp-line-multiscale-0shots": "cb942a4e48b1f30d649dd0f8dde27e71d31f895b8c2b42f22bac8f7765914276",
+    "bars_stripes-s2026-iqp-tree-multiscale-0shots": "89f97a99f8fea6b3ebabf4fda0abbb076e1e61247b491edb286fe4a06f5bbc7f",
+    "bars_stripes-s42-iqp-dense-multiscale-0shots": "b69833eb52ec20cb6bb3e9a4d7e5c586ee378ba87a4d270f6a1deec5458d7a52",
+    "bars_stripes-s42-iqp-line-multiscale-0shots": "79e139e9a731ddb22d3f5d8d4ddf894457abdc481f5ce04be2b31690b12e28cf",
+    "bars_stripes-s42-iqp-tree-multiscale-0shots": "4e5c126c916a37022ceb884b48cb759299eed9ff1e2c589b955ae9a1f3fdc70b",
+    "even_parity-s137-iqp-dense-multiscale-0shots": "9d19e715b3c905d02690a08a80d7f18c57b5c2540e4d6890fe167043515bb9ac",
+    "even_parity-s137-iqp-line-multiscale-0shots": "34e0022051fe9e240b1779b3bf791c592d61e40f8b7e51e2f85037b2485c7c4d",
+    "even_parity-s137-iqp-tree-multiscale-0shots": "d16482874f6839be833863ebd4e9fe08ca283583ffc1422c67cef558c95bb31b",
+    "even_parity-s2026-iqp-dense-multiscale-0shots": "d0835ef65a21a56cadbda96c311f2d0f216c6c77fb33639fd5473e2ee783faa7",
+    "even_parity-s2026-iqp-line-multiscale-0shots": "b5159b9f68d01094746733717e1a8b2a8eaf88d2d6859645ff0924b97bd84bf7",
+    "even_parity-s2026-iqp-tree-multiscale-0shots": "faddf5c4a14ec192dea2a3a0e54c669f2b6b78cf57afa0ac2bba1914941be8c4",
+    "even_parity-s42-iqp-dense-multiscale-0shots": "8b691bebfff9aeb6ea1dd4701c965d65ad1446e4a689da4b1a6e7cf2af141f8a",
+    "even_parity-s42-iqp-line-multiscale-0shots": "7a73cb7bbf6b9fcdb9be8ee0bb03475e7eb923bd4b24a88f6bfb3fd2b46ba618",
+    "even_parity-s42-iqp-tree-multiscale-0shots": "ae1a8395bd2a69e0b0ca42c7879ee94540621c8d72cceea33408535dff971cd1",
+    "gaussian_mixture-s137-iqp-dense-multiscale-0shots": "22270279d12e2624fa646d4c04e69970388ee9dcdd971343c7b6dd9c36460174",
+    "gaussian_mixture-s137-iqp-line-multiscale-0shots": "650e48054021a03b0e06bf52bede41c57cd35b344b6da2c5589773c1bc7bf9f6",
+    "gaussian_mixture-s137-iqp-tree-multiscale-0shots": "5824cb60b3fbb14a4d229a941208244b2b4998cf269fd90b908f7b05021f8c0d",
+    "gaussian_mixture-s2026-iqp-dense-multiscale-0shots": "b67c727462c07626782f2d8cc65490500855eb14f49081b67849f54706483d8c",
+    "gaussian_mixture-s2026-iqp-line-multiscale-0shots": "25b15344c0748ca595ef231489d43b6491a744b183da1e6d70bbe2cd9a224e65",
+    "gaussian_mixture-s2026-iqp-tree-multiscale-0shots": "4c9ecfb7f2fb4a864123d72efc91ac15f9a61997151e44ac1271ae81128e95db",
+    "gaussian_mixture-s42-iqp-dense-multiscale-0shots": "4a8415c473da9462935d8d016da351bb838f02bc8672c13f4e343d25b8c86f9e",
+    "gaussian_mixture-s42-iqp-line-multiscale-0shots": "1f86254c67396f71530dd85a4d9e2e3afe7783f98d39b4474858e28f6739b894",
+    "gaussian_mixture-s42-iqp-tree-multiscale-0shots": "1e98603c70a1665f5478251aeac67482228e5b5252841abc0fce100df8aa1e65"
+  },
+  "expected_jobs": 27,
+  "failed": 0
+}

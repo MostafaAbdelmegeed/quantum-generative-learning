@@ -1,0 +1,9 @@
+{
+  "experiment": "connectivity-v1", "mode": "exact", "n_qubits": 6,
+  "datasets": ["bars_stripes", "gaussian_mixture", "even_parity"],
+  "seeds": [42, 137, 2026], "train_size": 512, "test_size": 1024,
+  "family": "iqp", "topologies": ["dense", "line", "tree"], "depth": 1,
+  "losses": ["multiscale"], "maxiter": 250,
+  "noise_levels": [0.0, 0.001, 0.005, 0.01, 0.02], "evaluation_shots": 4096,
+  "classical_baselines": false
+}

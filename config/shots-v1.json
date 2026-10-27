@@ -1,0 +1,8 @@
+{
+  "experiment": "shots-v1", "mode": "shots", "n_qubits": 6,
+  "datasets": ["bars_stripes", "gaussian_mixture", "even_parity"],
+  "seeds": [42, 137, 2026], "train_size": 512, "test_size": 1024,
+  "family": "qcbm", "topologies": ["line"], "depth": 3,
+  "losses": ["fixed", "multiscale"], "shots": [256, 1024], "updates": 100,
+  "classical_baselines": false
+}

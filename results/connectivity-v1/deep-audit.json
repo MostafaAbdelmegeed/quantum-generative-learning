@@ -1,0 +1,10 @@
+{
+  "auditor_source_sha256": "9f37d2b9af5cba6d353bbe3f1e56aa543196e5a061b90214a307c2124184ce15",
+  "deep": true,
+  "distributions_checked": 324,
+  "index_sha256": "928e3f0e297af1ddab57d14d6380fc6ea13bebad2cd297e342f2719f748fe0bb",
+  "jobs": 27,
+  "noise_replays": 135,
+  "passed": true,
+  "source_sha256": "1aae2337f6d791b05170c2da7003515ec981a64637000b04e8de4d8693817578"
+}

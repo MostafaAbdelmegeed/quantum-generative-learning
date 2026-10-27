@@ -1,0 +1,65 @@
+{
+  "config": {
+    "classical_baselines": false,
+    "datasets": [
+      "bars_stripes",
+      "gaussian_mixture",
+      "even_parity"
+    ],
+    "depth": 1,
+    "evaluation_shots": 4096,
+    "experiment": "connectivity-v1",
+    "family": "iqp",
+    "losses": [
+      "multiscale"
+    ],
+    "maxiter": 250,
+    "mode": "exact",
+    "n_qubits": 6,
+    "noise_levels": [
+      0.0,
+      0.001,
+      0.005,
+      0.01,
+      0.02
+    ],
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "test_size": 1024,
+    "topologies": [
+      "dense",
+      "line",
+      "tree"
+    ],
+    "train_size": 512
+  },
+  "config_sha256": "b2891a87fafae0ad0b1c720c88e3f4e02ba03b7bda97b90be59eae007aab0517",
+  "created_utc": "2026-10-23T00:40:00.624088+00:00",
+  "dependencies": {
+    "numpy": "2.4.6",
+    "qiskit": "2.6.1",
+    "qiskit-aer": "0.18.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  },
+  "lockfile_sha256": "a8a8752b97cf6491783eea0522e38a2e45a59fb653bfd92b235d9381f1e49d6e",
+  "python": "3.11.15",
+  "source": {
+    "files": {
+      "__init__.py": "2c5e362191b6d3c40e575b2575ba5912c2dbe0e28e6d19411a0c77b80bde429b",
+      "audit.py": "290724f1e71b181a357529ff5d54ee4adeba9e1ac9fbd4e1e2351818b14d3fe7",
+      "circuits.py": "c684297a9cdc7f950bfc889441f5345b05adf351c516df0f8958dc40f89b194b",
+      "cli.py": "393604cafc5673a96e1bb3282f95612743c4a1bed3072b16862bdce2677a0d40",
+      "data.py": "ae410b953edc3d4f449936ce94300c7b949d9d95cbf029aa7ecf9c8202cc12ad",
+      "deployment.py": "11fc9a1f4bfef6c7aa0c9bb7b69ac9b0d67b43e78751b1e907eb431710ed861d",
+      "experiment.py": "05657b29df2292f98bdb08096f764d87daf5450a4bb84a4d75757dd42ca20d14",
+      "metrics.py": "f5dc01cfac75e3509cf4c9eda9a29a13813967178b342922cc91f714caf122e3",
+      "report.py": "aee0266d0d28ab755093c2cf4a5fea74e7b5adf773738f3ad515cf43eee2fe1b",
+      "training.py": "a208db5e749c629660298726a60694621a8f3221f2842f8d1d98fc4dd290cb8d"
+    },
+    "sha256": "1aae2337f6d791b05170c2da7003515ec981a64637000b04e8de4d8693817578"
+  }
+}

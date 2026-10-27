@@ -1,0 +1,57 @@
+{
+  "config": {
+    "classical_baselines": false,
+    "datasets": [
+      "bars_stripes",
+      "gaussian_mixture",
+      "even_parity"
+    ],
+    "depth": 3,
+    "experiment": "reproduction-v2",
+    "family": "qcbm",
+    "losses": [
+      "fixed",
+      "multiscale"
+    ],
+    "maxiter": 2000,
+    "mode": "exact",
+    "n_qubits": 6,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "test_size": 1024,
+    "topologies": [
+      "line"
+    ],
+    "train_size": 512
+  },
+  "config_sha256": "de79a08f20aa8712822166cdfffa7852e38048fb546e62ca228788a380b7aa7a",
+  "created_utc": "2026-10-23T10:04:31.251240+00:00",
+  "dependencies": {
+    "numpy": "2.4.6",
+    "qiskit": "2.6.1",
+    "qiskit-aer": "0.18.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  },
+  "lockfile_sha256": "a8a8752b97cf6491783eea0522e38a2e45a59fb653bfd92b235d9381f1e49d6e",
+  "python": "3.11.15",
+  "source": {
+    "files": {
+      "__init__.py": "2c5e362191b6d3c40e575b2575ba5912c2dbe0e28e6d19411a0c77b80bde429b",
+      "audit.py": "debae48abe64971f76986cdd12e5af2ad763159287c5ec8843353330656e5b7e",
+      "circuits.py": "5cf01c31140bd31811d88dc340f0f2ee29b5a2a407e00145394b554dd9165487",
+      "cli.py": "393604cafc5673a96e1bb3282f95612743c4a1bed3072b16862bdce2677a0d40",
+      "data.py": "ae410b953edc3d4f449936ce94300c7b949d9d95cbf029aa7ecf9c8202cc12ad",
+      "deployment.py": "11fc9a1f4bfef6c7aa0c9bb7b69ac9b0d67b43e78751b1e907eb431710ed861d",
+      "experiment.py": "290ffa3b63e3623980103847cc8726c066dc121aaf62b848285a9b9a98754201",
+      "iqp.py": "92caa1309dec0b0114946775c18090a1a37a40afa6e872d8d1b4329a1d3685a5",
+      "metrics.py": "f5dc01cfac75e3509cf4c9eda9a29a13813967178b342922cc91f714caf122e3",
+      "report.py": "aee0266d0d28ab755093c2cf4a5fea74e7b5adf773738f3ad515cf43eee2fe1b",
+      "training.py": "a208db5e749c629660298726a60694621a8f3221f2842f8d1d98fc4dd290cb8d"
+    },
+    "sha256": "c8048278b7984ce2af8b523cb90f3f4db741e4bb514d0ab4a3cb2f2258ec7a6b"
+  }
+}

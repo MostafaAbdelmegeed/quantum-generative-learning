@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=75"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "quantum-generative-learning"
+version = "0.1.0"
+description = "Reproducible quantum generative learning and Qiskit deployment experiments"
+requires-python = ">=3.11,<3.13"
+readme = "README.md"
+authors = [{name = "Mostafa Abdelmegeed"}]
+dependencies = [
+  "numpy>=2,<3", "scipy>=1.14,<2", "scikit-learn>=1.7,<2",
+  "qiskit==2.6.1", "qiskit-aer==0.18.0", "matplotlib>=3.9,<4",
+  "threadpoolctl>=3,<4",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<9"]
+
+[project.scripts]
+qgen = "qgen.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"

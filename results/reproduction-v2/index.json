@@ -1,0 +1,24 @@
+{
+  "completed": {
+    "bars_stripes-s137-qcbm-line-fixed-0shots": "b383beb38162e3207d9474e25de5c11823eaec4148e613f470fe01b035f4220b",
+    "bars_stripes-s137-qcbm-line-multiscale-0shots": "895ec4b4ff1e1561f282b06f00fd48038e9ce15dec81961fbf95d4770ff0626b",
+    "bars_stripes-s2026-qcbm-line-fixed-0shots": "41ea0455ef5069ceb020dd93141215ca4866e0084aade5b5f58a47e64416858d",
+    "bars_stripes-s2026-qcbm-line-multiscale-0shots": "80aa3e6b42d7bcfb70ae14e35a0e77ec49f9e06a2ea1c383d0a2eeeba8d0b5e3",
+    "bars_stripes-s42-qcbm-line-fixed-0shots": "69f61b246104af473c4febd78f84c73317086667e50b5d1da667b41f7402c447",
+    "bars_stripes-s42-qcbm-line-multiscale-0shots": "71607d96bfa0cec6fb376e53e7e8b724b7b475760403d9321b0b43aabe3bc4d9",
+    "even_parity-s137-qcbm-line-fixed-0shots": "e606ee4034a1c46e6714ccf9be884c6ba49e6148b1a9d5a1486ab9074df2f2bb",
+    "even_parity-s137-qcbm-line-multiscale-0shots": "4c2de4976388330e6efc516b7e8e2076ececaae86a0af15a42df6fc47b2ca5e5",
+    "even_parity-s2026-qcbm-line-fixed-0shots": "5a04ceb7d8d17a5979c6e14be4e7a1e6a765e1fe835552a9bd2a9b425780da2e",
+    "even_parity-s2026-qcbm-line-multiscale-0shots": "faa744a368f6e72117c330558e2ad66db4b1bdc1905ec89c776d0184b81efec2",
+    "even_parity-s42-qcbm-line-fixed-0shots": "6f24f8552da306fe24c89b7893f41ff8b1962fed8892fcd8f35e53b4b41a95b5",
+    "even_parity-s42-qcbm-line-multiscale-0shots": "18afffc0bafccd7928ac04ebc41a879b5e8b1c4027ea7fac251a55f6e843165b",
+    "gaussian_mixture-s137-qcbm-line-fixed-0shots": "6fe268c0e978877df66c587a45568100b785a99d0ae5dbfce0bbff9df337fe3d",
+    "gaussian_mixture-s137-qcbm-line-multiscale-0shots": "0c27a1a01996f42bfd8b8a61b13fb8ef40a20a3d770004deb30651ebe77fb477",
+    "gaussian_mixture-s2026-qcbm-line-fixed-0shots": "44e0c91403cc2f3057fe594e411d6b48f8b7b1d96acf646f9c6a3828272f05c9",
+    "gaussian_mixture-s2026-qcbm-line-multiscale-0shots": "cf6d6a7f3d0f07bb43e79effa3444b041ac5027e4b1ccfa513ebe9503bc557a4",
+    "gaussian_mixture-s42-qcbm-line-fixed-0shots": "d93c102be0ac25721ec2e3eac115783f8d2a33163d615d47f6ce95bf6895f18c",
+    "gaussian_mixture-s42-qcbm-line-multiscale-0shots": "42037f87d623bde605570a0fa33f278c4549fa67344acc3f56ef5513f72fbf29"
+  },
+  "expected_jobs": 18,
+  "failed": 0
+}

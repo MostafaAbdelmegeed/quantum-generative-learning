@@ -1,0 +1,9 @@
+{
+  "experiment": "iqp-mc-v1", "mode": "iqp_mc", "n_qubits": 6,
+  "datasets": ["bars_stripes", "gaussian_mixture", "even_parity"],
+  "seeds": [42, 137, 2026], "train_size": 512, "test_size": 1024,
+  "family": "iqp", "topologies": ["dense", "line", "tree"], "depth": 1,
+  "losses": ["multiscale"], "updates": 1500, "masks_per_step": 64,
+  "samples_per_half": 256, "learning_rate": 0.03,
+  "classical_baselines": false
+}

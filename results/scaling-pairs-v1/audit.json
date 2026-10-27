@@ -1,0 +1,7 @@
+{
+  "index_sha256": "760336d360be67eb0d9629b8a57dc67de57974516009132cf3ed0a87fb4fd5b3",
+  "jobs": 9,
+  "passed": true,
+  "qiskit_sampling_replays": 18,
+  "sample_sets_checked": 45
+}

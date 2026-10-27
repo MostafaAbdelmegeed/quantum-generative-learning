@@ -1,0 +1,51 @@
+{
+  "config": {
+    "evaluation_shots": 2048,
+    "experiment": "scaling-pairs-v1",
+    "learning_rate": 0.03,
+    "masks_per_step": 128,
+    "mode": "scaling",
+    "priority_fraction": 0.5,
+    "samples_per_half": 256,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "test_size": 1024,
+    "train_size": 512,
+    "updates": 1500,
+    "widths": [
+      8,
+      16,
+      32
+    ]
+  },
+  "config_sha256": "d3f9936d3a7133450a49c954f29e284a90bbdf2cf9629882c4f8c61c992bb361",
+  "created_utc": "2026-10-23T10:34:30.833875+00:00",
+  "dependencies": {
+    "numpy": "2.4.6",
+    "qiskit": "2.6.1",
+    "qiskit-aer": "0.18.0",
+    "scipy": "1.17.1"
+  },
+  "lockfile_sha256": "a8a8752b97cf6491783eea0522e38a2e45a59fb653bfd92b235d9381f1e49d6e",
+  "python": "3.11.15",
+  "source": {
+    "files": {
+      "__init__.py": "f69ce7b6e4d5de5ffccee83c767a7deeae288d77dabe0e5ce3c0e55eee2bd8f8",
+      "audit.py": "7a4e2dde4036056d0d022a0cea02651ab0c1e7b61ab0b9537ad46468923d826d",
+      "circuits.py": "0d9a0f9f7da8aedfa61ce4d434bc30923cb7ec6615493afd6b640fbeda2762a8",
+      "cli.py": "07aae8e8d4aa1d812c22486bbe0f117ebe8340e6708676ced37398303f95a23d",
+      "data.py": "588636b6822852270f6a202cdae4794912c3790ea265bc1048d56fd08973ba6d",
+      "deployment.py": "351ca30e90b0079f53167fc99476a12490704a535671b7d05b5fd3d0928019b8",
+      "experiment.py": "ecfbceefc0bd4145e4a0e001acf0145d4f59bde7194b312a754084e0745cfac0",
+      "iqp.py": "176738e8a024fc0a5d39af1a2cc7ead3727c325944299bf892b2957135259b9f",
+      "metrics.py": "3e0e78f0fce679df5a510afdf91d21abd083e43c7bf2949e3f0d80673d43b08a",
+      "report.py": "f79cbbf4b369380141586e7efd978fa3e02d0bc6f8d0570e4da7047c01bb9a39",
+      "scaling.py": "9d51fe373c17603bcc3961a7da4da19f58b0f58c9cb8e4f015ff685bb56244f4",
+      "training.py": "513d9d5b80d946b54ed341da09bd66bb7d48bea85ce6a87c55b522f736346754"
+    },
+    "sha256": "fb5120ea051f7ff1b58e82852dc27d652ccd575ed97d4d9918eb3893fc9b593b"
+  }
+}

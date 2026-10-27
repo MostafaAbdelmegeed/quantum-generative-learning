@@ -1,0 +1,6 @@
+{
+  "experiment": "scaling-v1", "mode": "scaling", "widths": [8, 16, 32],
+  "seeds": [42, 137, 2026], "train_size": 512, "test_size": 1024,
+  "updates": 1500, "masks_per_step": 128, "samples_per_half": 256,
+  "learning_rate": 0.03, "evaluation_shots": 2048
+}

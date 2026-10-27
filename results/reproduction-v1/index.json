@@ -1,0 +1,33 @@
+{
+  "completed": {
+    "bars_stripes-s137-classical": "2a75edf910a0e399ea5abb641f2539036a93facbbb0fece3e48db871d0810181",
+    "bars_stripes-s137-qcbm-line-fixed-0shots": "160db4293130bcf6a212fbe7c3f20a9b3cc824c916e2b1326c0e87fd0291c9df",
+    "bars_stripes-s137-qcbm-line-multiscale-0shots": "15b1835ce7f02bd16675b8d41fc545b39b28ee960eac5718a0bfe74783c0d0ed",
+    "bars_stripes-s2026-classical": "af73f042ec18dfb3f2d4da9592010e0eab1053156d0f2adc0aff85b1d084c4d7",
+    "bars_stripes-s2026-qcbm-line-fixed-0shots": "daded2845d467f2dedc25777f5301d312115abda96311900799c3d189d85d929",
+    "bars_stripes-s2026-qcbm-line-multiscale-0shots": "a155cef16878d5d7c60956bafd5637614f61b87e0e042656b89cc09ba9a4cf55",
+    "bars_stripes-s42-classical": "07d3102543a6c76054ea94ddfa05058e8ab54f0dd755ab95eba3f9786c579f91",
+    "bars_stripes-s42-qcbm-line-fixed-0shots": "3d759d24604af998863694a176e0be465054a6d3a513699a33df5f5c9079def7",
+    "bars_stripes-s42-qcbm-line-multiscale-0shots": "effd42f5abdc2ec9f566ba6908d48f75fcde8a89aadbd578fe8bd978e5c61ea8",
+    "even_parity-s137-classical": "2ca0c8e5f62c0e758f41e0e21df05cd963cd1b0226a45e6a053dc85df8ecafd5",
+    "even_parity-s137-qcbm-line-fixed-0shots": "586fbb0edc4264ddafbac6ef25f6b32c722d4889ca07eab3c62e2ee65fce25b5",
+    "even_parity-s137-qcbm-line-multiscale-0shots": "9b41433a96903a7d94ca3189c95c862de52ccdee93483ab0e0c61853eaa3956f",
+    "even_parity-s2026-classical": "17a16d3fed4e3bd117121f8dcc2423dfce6c46cbce824f2dd368589769728dd5",
+    "even_parity-s2026-qcbm-line-fixed-0shots": "5cca471b0496020fb5d40e1fdaf9105b3dcf27aa74dabbf733ea2a474c3cc43c",
+    "even_parity-s2026-qcbm-line-multiscale-0shots": "cb784ca290d59fbcd9fd5334209cfd347f500db62b43d9286883bcb33e1da9bc",
+    "even_parity-s42-classical": "f69d514c798ecf2a0d5b0972256249a24d4fbdd566d65ea8dc4c9a71ad774d35",
+    "even_parity-s42-qcbm-line-fixed-0shots": "d90e4fbfbe68b1cb45e892acec7156f7d32b3e5b487feaea958c120af12301f3",
+    "even_parity-s42-qcbm-line-multiscale-0shots": "63562ed4933938b60c645cd9c2a36009d1a87af0943d47e97d8b0e203f98bc9f",
+    "gaussian_mixture-s137-classical": "a822827c0f591f47a705cb8fff4106e6857383d2eefb2c95fdbf55ffea876d8b",
+    "gaussian_mixture-s137-qcbm-line-fixed-0shots": "6c5553354ddf94f9623dab578a71e4b4cd15e8417cab2e9fd8615bcddf0e89bf",
+    "gaussian_mixture-s137-qcbm-line-multiscale-0shots": "a3d5e7e61b816a15c4e7dda39070e03ed0cc059d3b5020e6a0bb0aa2ee357aee",
+    "gaussian_mixture-s2026-classical": "a52355ef3ef8ef61d5185f28d00692f99a90d082dbb598e888b55b3498afcfa5",
+    "gaussian_mixture-s2026-qcbm-line-fixed-0shots": "9c55284349ebfce65710df0e094e947e27ebf445ca81b176264bed9240d3eaf6",
+    "gaussian_mixture-s2026-qcbm-line-multiscale-0shots": "0b5833d76ebd2fba37836302ba7a54c18f1f17c6f54b64be0476f66ac55e57b9",
+    "gaussian_mixture-s42-classical": "d3c73af1b01c9953356f205c1f78d38aa90d112d16dfae8f745b62d5f12388a0",
+    "gaussian_mixture-s42-qcbm-line-fixed-0shots": "3c4926c0cc33851c0703062e0d9d29196ba5045e0047fc10dc8dade5e3dbf97f",
+    "gaussian_mixture-s42-qcbm-line-multiscale-0shots": "423ed2bda1a7622505e86f34c93e521ba162f009ecb3786c0e7b02636ea9d9c1"
+  },
+  "expected_jobs": 27,
+  "failed": 0
+}

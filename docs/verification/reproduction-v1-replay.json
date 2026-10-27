@@ -1,0 +1,37 @@
+{
+  "ignored_fields": [
+    "seconds",
+    "training_seconds"
+  ],
+  "matched_records": [
+    "bars_stripes-s137-classical",
+    "bars_stripes-s137-qcbm-line-fixed-0shots",
+    "bars_stripes-s137-qcbm-line-multiscale-0shots",
+    "bars_stripes-s2026-classical",
+    "bars_stripes-s2026-qcbm-line-fixed-0shots",
+    "bars_stripes-s2026-qcbm-line-multiscale-0shots",
+    "bars_stripes-s42-classical",
+    "bars_stripes-s42-qcbm-line-fixed-0shots",
+    "bars_stripes-s42-qcbm-line-multiscale-0shots",
+    "even_parity-s137-classical",
+    "even_parity-s137-qcbm-line-fixed-0shots",
+    "even_parity-s137-qcbm-line-multiscale-0shots",
+    "even_parity-s2026-classical",
+    "even_parity-s2026-qcbm-line-fixed-0shots",
+    "even_parity-s2026-qcbm-line-multiscale-0shots",
+    "even_parity-s42-classical",
+    "even_parity-s42-qcbm-line-fixed-0shots",
+    "even_parity-s42-qcbm-line-multiscale-0shots",
+    "gaussian_mixture-s137-classical",
+    "gaussian_mixture-s137-qcbm-line-fixed-0shots",
+    "gaussian_mixture-s137-qcbm-line-multiscale-0shots",
+    "gaussian_mixture-s2026-classical",
+    "gaussian_mixture-s2026-qcbm-line-fixed-0shots",
+    "gaussian_mixture-s2026-qcbm-line-multiscale-0shots",
+    "gaussian_mixture-s42-classical",
+    "gaussian_mixture-s42-qcbm-line-fixed-0shots",
+    "gaussian_mixture-s42-qcbm-line-multiscale-0shots"
+  ],
+  "passed": true,
+  "source_sha256": "1aae2337f6d791b05170c2da7003515ec981a64637000b04e8de4d8693817578"
+}
