@@ -5,11 +5,23 @@ from pathlib import Path
 
 from qgen.experiment import file_digest
 
+BASELINE_SERIES = {
+    "reproduction-v1",
+    "reproduction-v2",
+    "shots-v1",
+    "connectivity-v1",
+    "iqp-mc-v1",
+    "scaling-v1",
+    "scaling-pairs-v1",
+}
+
 
 def main():
     root = Path(__file__).resolve().parents[1]
     records, scale = [], []
     for folder in sorted((root / "results").iterdir()):
+        if folder.name not in BASELINE_SERIES:
+            continue
         if not (folder / "manifest.json").exists():
             continue
         audit = json.loads((folder / "audit.json").read_text())

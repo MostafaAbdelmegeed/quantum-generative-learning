@@ -15,6 +15,15 @@ from qgen.experiment import write_json
 from qgen.scaling import audit_scaling
 
 ROOT = Path(__file__).resolve().parents[1]
+BASELINE_SERIES = {
+    "reproduction-v1",
+    "reproduction-v2",
+    "shots-v1",
+    "connectivity-v1",
+    "iqp-mc-v1",
+    "scaling-v1",
+    "scaling-pairs-v1",
+}
 LABELS = {
     "bars_stripes": "Bars and stripes",
     "gaussian_mixture": "Gaussian mixture",
@@ -25,6 +34,8 @@ LABELS = {
 def main():
     records, audits, rows = {}, {}, []
     for folder in sorted((ROOT / "results").iterdir()):
+        if folder.name not in BASELINE_SERIES:
+            continue
         if not (folder / "manifest.json").exists():
             continue
         manifest = json.loads((folder / "manifest.json").read_text())

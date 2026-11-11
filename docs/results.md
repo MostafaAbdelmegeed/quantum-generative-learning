@@ -2,6 +2,8 @@
 
 23 October 2026. Seven experiment series, 153 saved records, three seeds per comparison. All execution used local classical hardware and Qiskit simulators.
 
+The separate [11 November generalization follow-up](observable-generalization-results.md) tests shuffled/noisy pairs and higher-order parity. Its negative and mixed results qualify the pair-weighting result below; this page preserves the first release's comparisons.
+
 The main result is a working classical-training and Qiskit-sampling pipeline, plus a useful correction to its training objective. At 32 qubits, giving extra weight to correlations found in the training data increased fully valid samples from **81.0% to 99.6%** at the same mask and update budgets. The ordinary MMD evaluation score barely changed. On this task, the original loss underweighted the constraints that mattered to sample quality.
 
 The task is deliberately easy for a classical model, which achieves 100% valid samples. This release does not demonstrate quantum advantage. It provides a verified implementation and a bounded experiment that can be extended. Open the [interactive explorer](explorer.html) to inspect individual seeds and simulated noise.

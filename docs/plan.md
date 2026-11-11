@@ -15,13 +15,24 @@ Started 23 October 2026. The goal is a standalone portfolio project with runnabl
 - [x] Test training-only pair selection at the same mask/update budget. Mean 32-qubit sample validity improved from 81.0% to 99.6%.
 - [x] Audit all seven series, replay simulations, reproduce an archived experiment, and build the demo and explorer.
 
-The release contains 153 experiment records, 31 passing local tests and a CI workflow. GitHub CI and physical quantum hardware have not been used.
+The published baseline contains 153 experiment records and passed 31 tests. Its Windows and Ubuntu GitHub checks passed on 11 November 2026. Physical quantum hardware has not been used.
+
+## Observable generalization follow-up
+
+- [x] Freeze six-bit adjacent pairs, shuffled pairs, noisy pairs and three- and four-bit parity targets.
+- [x] Verify explicit target parameters with NumPy and Qiskit in the same 21-parameter dense circuit.
+- [x] Compare ordinary MMD, learned pair weighting and higher-order weighting with matched data, initialization and Monte Carlo budgets.
+- [x] Compare sampled and enumerated moments using identical masks and Adam schedules.
+- [x] Run 90 circuit fits and 90 learned classical fits; retain three classical iteration-limit failures and poor circuit solutions.
+- [x] Audit all 195 fitted/reference distributions and replay all 90 Adam fits. The expanded numerical suite passes 42 tests.
+
+The [follow-up report](observable-generalization-results.md) finds no reliable benefit from learned weighting under this bounded schedule. The classical model using the selected observables has lower mean TVD in every condition. The new archive adds 15 condition/seed records without changing any published baseline snapshot.
 
 ## Next bounded research step
 
-Test whether learned observables help beyond the easy paired-bit construction. Freeze permuted pairs, partially corrupted pairs and higher-order parity blocks before running them. Compare generic MMD, learned pair weighting and a higher-order observable selector at equal budgets. Include a classical model that can learn the same structures. Report complete-sample validity as well as MMD.
+Separate selector design from optimization sensitivity before increasing width. The higher-order selector often chooses products of pair constraints on clean-pair data, while some poor solutions persist with enumerated moments. A new protocol could test a preference for lower-order features and a separately controlled initialization or longer-budget comparison. Keep the current negative results as the baseline; do not retune this archived series.
 
-A separate control should compare exact and estimated gradients under the same Adam schedule. The present L-BFGS-B versus Adam comparison cannot isolate estimator noise. A hardware-oriented extension should fix parameter count while selecting interactions, then evaluate measured routing cost under more than one device layout.
+The new Adam control isolates moment-estimation noise while retaining mask-sampling noise. A fully enumerated-mask control would answer a different question. A hardware-oriented extension should fix parameter count while selecting interactions, then evaluate measured routing cost under more than one device layout.
 
 Publishing and running a physical device are separate release steps. A hardware experiment needs a concrete shot budget and device configuration; the current results do not require one.
 

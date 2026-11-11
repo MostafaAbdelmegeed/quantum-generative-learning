@@ -1,0 +1,20 @@
+{
+  "version": "observable-generalization-v1",
+  "n_qubits": 6,
+  "conditions": ["adjacent_pairs", "shuffled_pairs", "noisy_pairs", "parity3", "parity4"],
+  "seeds": [42, 137, 2026],
+  "losses": ["multiscale", "pair", "higher"],
+  "estimators": ["mc", "enumerated"],
+  "train_size": 512,
+  "test_size": 1024,
+  "updates": 400,
+  "masks_per_step": 64,
+  "samples_per_half": 64,
+  "learning_rate": 0.03,
+  "priority_fraction": 0.5,
+  "selected_count": 3,
+  "maximum_order": 4,
+  "evaluation_shots": 2048,
+  "classical_maxiter": 300,
+  "classical_l2": 0.0001
+}

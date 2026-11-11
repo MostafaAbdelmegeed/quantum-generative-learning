@@ -9,6 +9,8 @@ Start with the [results report](results.md) for the measured outcomes, or the [m
 | [Optimization and estimator follow-up](protocol-v2.md) | Larger optimization budget and classical Monte Carlo IQP training |
 | [Scaling protocol](scaling-protocol.md) | Paired-bit tasks at 8, 16 and 32 qubits |
 | [Pair-weighting protocol](pair-priority-protocol.md) | Training-data correlation selection under a fixed estimator budget |
+| [Observable generalization protocol](observable-generalization-protocol.md) | Expressible shuffled/noisy pairs and higher-order parity, selectors and matched loss budgets |
+| [Observable generalization results](observable-generalization-results.md) | The bounded follow-up, classical controls, optimizer failures and every paired seed difference |
 | [Results report](results.md) | Classical baselines, every experiment family and limits of the conclusions |
 | [IQP method notes](iqp-method-notes.md) | Derivations, implementation conventions and pinned upstream references |
 | [Work plan](plan.md) | Completed work and remaining research questions |

@@ -35,6 +35,19 @@ The replay script checks Python and dependency versions, the lockfile hash and e
 
 The initial 27-record series matched under the recorded Windows environment; its [comparison receipt](verification/reproduction-v1-replay.json) is tracked. Exact field equality is stricter than numerical agreement. BLAS, floating-point and compiler differences can prevent identical records on another platform. CI's numerical tests and artifact audits are separate from a full training replay.
 
+## Observable generalization follow-up
+
+This series uses its own runner and auditor. It refuses existing output directories, uses one worker and keeps the five-condition comparison separate from the baseline release report.
+
+```bash
+uv run --locked python -m qgen.generalization --config config/observable-generalization-v1.json --output artifacts/observable-generalization-new
+uv run --locked python -m qgen.generalization_audit --output artifacts/observable-generalization-new --replay
+uv run --locked python scripts/replay_generalization.py --snapshot results/observable-generalization-v1 --output artifacts/observable-generalization-replay-new
+uv run --locked python scripts/build_generalization_report.py --series results/observable-generalization-v1 --destination docs
+```
+
+The `--replay` audit repeats all 90 Adam fits using the loaded source. The separate replay script loads the saved package source, configuration and protocol, checks dependency versions, reruns all circuit and classical fits, and compares complete records excluding elapsed times. All 15 archived records reproduced exactly in the recorded Windows environment; the [receipt](verification/observable-generalization-v1-replay.json) preserves that check. The [report](observable-generalization-results.md) includes all seed differences, classical optimizer-limit failures and limitations.
+
 ## Audit saved results
 
 ```bash

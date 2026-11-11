@@ -99,7 +99,9 @@ The [reproduction guide](docs/reproduction.md) covers all series, archived-sourc
 
 The small-system comparisons use synthetic distributions with known evaluation targets. The 32-qubit circuits and paired-bit target are easy to simulate classically. The six-qubit noise model includes depolarizing gate errors; it excludes readout errors, relaxation and crosstalk. No hardware runs or 32-qubit noise results are included.
 
-The next research step is to test the learned weighting on distributions with competing or higher-order constraints, retaining strong classical generators and fixed budgets. The [work plan](docs/plan.md) defines that boundary. The earlier [neuroimaging benchmark](https://github.com/MostafaAbdelmegeed/quantum-neuro-ml) is maintained as a separate study.
+The [work plan](docs/plan.md) now focuses on separating selector design from optimization sensitivity before increasing width. The earlier [neuroimaging benchmark](https://github.com/MostafaAbdelmegeed/quantum-neuro-ml) is maintained as a separate study.
+
+The [six-qubit follow-up](docs/observable-generalization-results.md) now tests shuffled pairs, corrupted pairs and three- and four-bit parity under a frozen 400-update budget. Learned weighting did not reliably improve TVD, and the classical model using the selected features had lower mean TVD in all five conditions. The follow-up preserves 90 circuit fits, 90 learned classical fits and 15 oracle references in a separate [audited archive](results/observable-generalization-v1/). Its exact-moment controls use the same sampled masks and Adam schedule; they expose failures that remain after removing moment-estimation noise.
 
 ## References and citation
 
