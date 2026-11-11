@@ -1,0 +1,10 @@
+{
+  "blas_threads": 1,
+  "estimated_mc_fit_seconds": 1.984200000297278,
+  "gradient_calls": 20,
+  "memory_scope": "Python/NumPy traced allocations, not process RSS",
+  "seconds": 0.024802500003715977,
+  "target_fit_outcomes_used": false,
+  "traced_peak_bytes": 549632,
+  "workers": 1
+}

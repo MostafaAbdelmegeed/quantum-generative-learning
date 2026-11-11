@@ -1,0 +1,20 @@
+{
+  "version": "routing-controls-v1",
+  "n_qubits": 6,
+  "conditions": ["adjacent_pairs", "shuffled_pairs", "noisy_pairs", "parity3", "parity4"],
+  "seeds": [42, 137, 2026],
+  "topologies": ["path_bridges", "hub_bridges"],
+  "devices": ["line", "ring", "star"],
+  "errors": [0.0, 0.005, 0.02],
+  "train_size": 512,
+  "test_size": 1024,
+  "updates": 1600,
+  "masks_per_step": 64,
+  "samples_per_half": 64,
+  "learning_rate": 0.03,
+  "priority_fraction": 0.5,
+  "evaluation_shots": 2048,
+  "optimization_level": 3,
+  "transpiler_seed": 17,
+  "compiled_probability_atol": 1e-10
+}

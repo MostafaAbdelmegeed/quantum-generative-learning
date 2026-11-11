@@ -28,3 +28,5 @@ jobs:
       - run: uv run --locked qgen audit --output results/iqp-mc-v1
       - run: uv run --locked qgen audit --output results/connectivity-v1
       - run: uv run --locked python -m qgen.generalization_audit --output results/observable-generalization-v1
+      - run: uv run --locked python -m qgen.diagnostics audit --output results/observable-diagnostics-v1
+      - run: uv run --locked python -m qgen.routing_controls audit --output results/routing-controls-v1 --replay

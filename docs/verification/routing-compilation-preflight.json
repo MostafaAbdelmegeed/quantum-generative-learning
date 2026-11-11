@@ -1,0 +1,636 @@
+{
+  "evaluations": 90,
+  "maximum_error": 8.856465005813163e-10,
+  "rows": [
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 4.163336342344337e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 4.163336342344337e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 4.163336342344337e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 3.608224830031759e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 1.969813201441184e-13,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 1.9714785359781217e-13,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 1.9706458687096529e-13,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 3.3306690738754696e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "line",
+      "max_probability_error": 3.608224830031759e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "ring",
+      "max_probability_error": 5.273559366969494e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "adjacent_pairs",
+      "device": "star",
+      "max_probability_error": 4.440892098500626e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 2.7755575615628914e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 2.3592239273284576e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 2.636779683484747e-16,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 2.636779683484747e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 2.636779683484747e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 2.636779683484747e-16,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 2.3592239273284576e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 2.636779683484747e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 2.3592239273284576e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 2.3592239273284576e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 2.3592239273284576e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "line",
+      "max_probability_error": 2.498001805406602e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "ring",
+      "max_probability_error": 2.0816681711721685e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "noisy_pairs",
+      "device": "star",
+      "max_probability_error": 2.498001805406602e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 1.1796119636642288e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 1.1796119636642288e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 1.249000902703301e-16,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 9.71445146547012e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 7.28583859910259e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 6.938893903907228e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 5.898059818321144e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 6.591949208711867e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 7.28583859910259e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 1.3183898417423734e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 1.6653345369377348e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 1.0408340855860843e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 3.7470027081099033e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 4.996003610813204e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 4.3021142204224816e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "line",
+      "max_probability_error": 1.942890293094024e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "ring",
+      "max_probability_error": 1.942890293094024e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity3",
+      "device": "star",
+      "max_probability_error": 2.0816681711721685e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 7.979727989493313e-17,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 8.673617379884035e-17,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 6.938893903907228e-17,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 7.632783294297951e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 7.632783294297951e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 6.938893903907228e-17,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 8.673617379884035e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 7.632783294297951e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 6.938893903907228e-17,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 5.204170427930421e-17,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 5.204170427930421e-17,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 5.898059818321144e-17,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 1.5959455978986625e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 1.249000902703301e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 1.249000902703301e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "line",
+      "max_probability_error": 6.591949208711867e-17,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "ring",
+      "max_probability_error": 6.591949208711867e-17,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "parity4",
+      "device": "star",
+      "max_probability_error": 7.979727989493313e-17,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 1.0650175186199817e-11,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 1.0650175186199817e-11,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 1.0650175186199817e-11,
+      "seed": 137,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 8.856463479256504e-10,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 8.856465005813163e-10,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 8.856464311923773e-10,
+      "seed": 137,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 1.9470133209118837e-12,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 1.9470133209118837e-12,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 1.947013380098311e-12,
+      "seed": 2026,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 3.608224830031759e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 3.0531133177191805e-16,
+      "seed": 2026,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 3.469446951953614e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 3.469446951953614e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 3.469446951953614e-16,
+      "seed": 42,
+      "topology": "path_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "line",
+      "max_probability_error": 4.163336342344337e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "ring",
+      "max_probability_error": 4.440892098500626e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    },
+    {
+      "condition": "shuffled_pairs",
+      "device": "star",
+      "max_probability_error": 4.163336342344337e-16,
+      "seed": 42,
+      "topology": "hub_bridges"
+    }
+  ]
+}

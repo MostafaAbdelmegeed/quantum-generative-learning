@@ -1,0 +1,8 @@
+{
+  "index_sha256": "a8817dee45292273e331a0e5e1b4a4ff957a23c1b398bf5f5efc3f13162e625e",
+  "jobs": 15,
+  "noise_evaluations_checked": 270,
+  "noise_evaluations_replayed": 270,
+  "passed": true,
+  "training_fits_replayed": 30
+}

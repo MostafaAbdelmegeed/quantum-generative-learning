@@ -1,0 +1,28 @@
+{
+  "completed": {
+    "adjacent_pairs-s137": "3159ab2c62c3d9bbb2908a826ab97b6fb094e610847f2c911704e6956f54c186",
+    "adjacent_pairs-s2026": "32975643b264feb44df12dd459af6bda027eac63af311e12e4675300491b8a0b",
+    "adjacent_pairs-s42": "dd14482c0172275ee61b8a8beedd4018c68e9cb92233c27c9e98e4d3a9ad193b",
+    "noisy_pairs-s137": "6011ffc1fd5c4b0f9aee78fbe25faaebd198fdc08807ad340dbc6145511d26f8",
+    "noisy_pairs-s2026": "86a11551f4c89b6014156d0122a763062df773c95aeac60cefaa212ab906df46",
+    "noisy_pairs-s42": "d2df9d38f278111c8ca2110ab6773715a3c0d8320fe474d5a7290fc3f7c06505",
+    "parity3-s137": "e58c557eb3bebb551a2bc81223fbebd343cb7a298e9b5aadfaa8b1cf911a218b",
+    "parity3-s2026": "a0f6fc22dfe6306ffefb2a1a377b18aa3bbdb21ae70e65a1372a7963da1395c4",
+    "parity3-s42": "d8cdca44b8dc42087f6979c5f881f27f01545b270ae1a4851ccce9ff94439bd0",
+    "parity4-s137": "f6c15ea9672db0b546a163032a4a41a659019ffad4b28dbc7c832259e2f961b6",
+    "parity4-s2026": "71c1b472c0d6329d2cf5180f9e3589ec9b2a7610a545509df734a0510de6ebb7",
+    "parity4-s42": "6f0663273dc8db34804d1c6caa8fc10832e79d59d904dfe1013ff07ec2a29333",
+    "shuffled_pairs-s137": "2f0a30e285acc894e7f2ee170eaf6e2573fba0195a81cc4406cfab97940306a3",
+    "shuffled_pairs-s2026": "618a639b6d99516c2ca165814fd2793b29eb36aaeaca1258ef9218a48d3647a4",
+    "shuffled_pairs-s42": "6cb93247417ff2072390ed36978e3e91ca5e61e4ce70c8713f70a72ba472a456"
+  },
+  "expected_jobs": 15,
+  "failed": {
+    "shuffled_pairs-s137": [
+      {
+        "topology": "hub_bridges",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 198, in run_record\n    deployed = deploy(spec, fit[\"parameters\"], device, config, seed + 3109)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 131, in deploy\n    require(\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\audit.py\", line 17, in require\n    raise ValueError(message)\nValueError: Noiseless routed distribution exceeds compilation tolerance\n"
+      }
+    ]
+  }
+}

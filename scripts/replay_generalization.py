@@ -1,4 +1,4 @@
-"""Reproduce the observable comparison using its archived package and protocol."""
+"""Reproduce an observable or routing follow-up from its archived source."""
 
 import argparse
 import json
@@ -34,6 +34,24 @@ def replay(snapshot, output):
         raise FileExistsError(output)
     manifest = json.loads((snapshot / "manifest.json").read_text())
     index = json.loads((snapshot / "index.json").read_text())
+    if index["failed"]:
+        raise ValueError("This replay command requires a complete successful series")
+    routes = {
+        "observable-generalization-v1": (
+            "qgen.generalization",
+            "observable-generalization-protocol.md",
+        ),
+        "observable-diagnostics-v1": (
+            "qgen.diagnostics",
+            "observable-diagnostics-protocol.md",
+        ),
+        "routing-controls-v1": (
+            "qgen.routing_controls",
+            "routing-controls-protocol.md",
+        ),
+    }
+    module, protocol = routes[manifest["config"]["version"]]
+    followup = module != "qgen.generalization"
     if manifest["config_sha256"] != digest(manifest["config"]):
         raise ValueError("Configuration receipt mismatch")
     if manifest["source"]["sha256"] != digest(manifest["source"]["files"]):
@@ -58,22 +76,39 @@ def replay(snapshot, output):
         for name, checksum in manifest["frozen_files"].items():
             if Path(name).name != name or file_digest(snapshot / name) != checksum:
                 raise ValueError("Frozen file mismatch")
-            destination = root / (
-                "docs/observable-generalization-protocol.md"
-                if name == "protocol.md"
-                else name
-            )
+            destination = root / (f"docs/{protocol}" if name == "protocol.md" else name)
             shutil.copyfile(snapshot / name, destination)
+        reference_args = []
+        if followup:
+            reference = root / "reference"
+            (reference / "runs").mkdir(parents=True)
+            if (
+                file_digest(snapshot / "reference/index.json")
+                != manifest["reference_index_sha256"]
+            ):
+                raise ValueError("Reference index mismatch")
+            reference_index = json.loads(
+                (snapshot / "reference/index.json").read_text()
+            )
+            shutil.copyfile(snapshot / "reference/index.json", reference / "index.json")
+            for name in index["completed"]:
+                path = snapshot / "reference" / f"{name}.json"
+                if file_digest(path) != reference_index["completed"][name]:
+                    raise ValueError("Reference record mismatch")
+                shutil.copyfile(path, reference / "runs" / f"{name}.json")
+            reference_args = ["--reference", str(reference)]
         env = {**os.environ, "PYTHONPATH": str(root / "src")}
         subprocess.run(
             [
                 sys.executable,
                 "-m",
-                "qgen.generalization",
+                module,
+                *(["run"] if followup else []),
                 "--config",
                 str(root / "config.json"),
                 "--output",
                 str(output),
+                *reference_args,
             ],
             cwd=root,
             env=env,
@@ -83,7 +118,8 @@ def replay(snapshot, output):
             [
                 sys.executable,
                 "-m",
-                "qgen.generalization_audit",
+                module if followup else "qgen.generalization_audit",
+                *(["audit"] if followup else []),
                 "--output",
                 str(output),
             ],

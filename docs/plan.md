@@ -30,9 +30,11 @@ The [follow-up report](observable-generalization-results.md) finds no reliable b
 
 ## Next bounded research step
 
-Separate selector design from optimization sensitivity before increasing width. The higher-order selector often chooses products of pair constraints on clean-pair data, while some poor solutions persist with enumerated moments. A new protocol could test a preference for lower-order features and a separately controlled initialization or longer-budget comparison. Keep the current negative results as the baseline; do not retune this archived series.
+The [diagnostic follow-up](observable-diagnostics-results.md) completed the order-penalized selector, 400-versus-1,600-update comparison and fully enumerated-mask control. All 360 circuit fits were replayed; the original 90 short-budget fits reproduced exactly apart from elapsed times. Improvements are selective, and poor deterministic-gradient solutions remain.
 
-The new Adam control isolates moment-estimation noise while retaining mask-sampling noise. A fully enumerated-mask control would answer a different question. A hardware-oriented extension should fix parameter count while selecting interactions, then evaluate measured routing cost under more than one device layout.
+The [routing study](routing-controls-results.md) completed 30 fits with matched parameter counts and target expressibility, three device layouts and 270 noise evaluations. All fits and deployments were replayed. Two earlier attempts remain archived after numerical compilation checks failed; the protocol records the final verification tolerance.
+
+A remaining local question is initialization and optimizer sensitivity: compare a frozen restart or initialization policy while choosing fits from training criteria only. Keep data, loss, total update budget and classical references fixed. The current studies do not justify increasing width or claiming quantum advantage.
 
 Publishing and running a physical device are separate release steps. A hardware experiment needs a concrete shot budget and device configuration; the current results do not require one.
 

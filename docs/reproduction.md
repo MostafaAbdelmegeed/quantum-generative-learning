@@ -48,6 +48,23 @@ uv run --locked python scripts/build_generalization_report.py --series results/o
 
 The `--replay` audit repeats all 90 Adam fits using the loaded source. The separate replay script loads the saved package source, configuration and protocol, checks dependency versions, reruns all circuit and classical fits, and compares complete records excluding elapsed times. All 15 archived records reproduced exactly in the recorded Windows environment; the [receipt](verification/observable-generalization-v1-replay.json) preserves that check. The [report](observable-generalization-results.md) includes all seed differences, classical optimizer-limit failures and limitations.
 
+## Diagnostic and routing follow-ups
+
+```bash
+uv run --locked python -m qgen.diagnostics run --output artifacts/observable-diagnostics-new
+uv run --locked python -m qgen.diagnostics audit --output artifacts/observable-diagnostics-new --replay
+uv run --locked python -m qgen.routing_controls run --output artifacts/routing-controls-new
+uv run --locked python -m qgen.routing_controls audit --output artifacts/routing-controls-new --replay
+uv run --locked python scripts/replay_generalization.py --snapshot results/observable-diagnostics-v1 --output artifacts/diagnostics-source-replay-new
+uv run --locked python scripts/replay_generalization.py --snapshot results/routing-controls-v1 --output artifacts/routing-source-replay-new
+uv run --locked python scripts/build_diagnostics_report.py --series results/observable-diagnostics-v1 --destination docs
+uv run --locked python scripts/build_routing_report.py --series results/routing-controls-v1 --destination docs
+```
+
+Both runners require fresh directories. Diagnostic auditing replays 360 Adam fits and checks the 90 original short-budget fits against their published references. Routing auditing replays 30 fits and 270 noise evaluations, including sample counts. The source-replay command copies the archived package, frozen protocol and saved reference records into a temporary environment and compares full records apart from timings. The incomplete routing attempts are preserved for diagnosis; this replay command intentionally rejects incomplete series.
+
+Both complete series reproduced every record from archived source in the recorded Windows environment. See the [diagnostic receipt](verification/observable-diagnostics-v1-replay.json) and [routing receipt](verification/routing-controls-v1-replay.json). This exact-equality claim is separate from numerical portability across operating systems.
+
 ## Audit saved results
 
 ```bash

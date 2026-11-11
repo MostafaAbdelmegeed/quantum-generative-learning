@@ -1,0 +1,21 @@
+{
+  "attempts": [
+    {
+      "archive": "routing-controls-attempt1",
+      "completed_fits_matching_final": 28,
+      "failed_jobs": [
+        "shuffled_pairs-s137"
+      ],
+      "index_sha256": "fa035d665621228ff7318ab68df92c56f1a7fcfeeed31ab8575c66b88e5cbc9a"
+    },
+    {
+      "archive": "routing-controls-attempt2",
+      "completed_fits_matching_final": 29,
+      "failed_jobs": [
+        "shuffled_pairs-s137"
+      ],
+      "index_sha256": "851eaa304b7783233246874522fd7666e35abc227a465655c7f2a24e794dd5ef"
+    }
+  ],
+  "training_unchanged": true
+}

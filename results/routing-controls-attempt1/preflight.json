@@ -1,0 +1,7 @@
+{
+  "blas_threads": 1,
+  "simulator_threads": 1,
+  "single_compilation_and_noise_evaluation_seconds": 0.050900699992780574,
+  "target_fit_outcomes_used": false,
+  "workers": 1
+}

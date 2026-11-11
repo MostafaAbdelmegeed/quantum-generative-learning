@@ -1,0 +1,32 @@
+{
+  "completed": {
+    "adjacent_pairs-s137": "b18b4801b08fb5627c27c84d92d93fe6b1b742ffcd04609bcd84d96e7b4c1f42",
+    "adjacent_pairs-s2026": "4a9526f2dc1118ca73d18e399b7e81752dbc0c48a25737cefa27dc1aace852bc",
+    "adjacent_pairs-s42": "d7aea6796301fc9795e20ba84f8f89d7ca2133ebb33bcb8cf5d0e7f830cdb8b9",
+    "noisy_pairs-s137": "9a375306877d6f9f3b50e756991d1c0539ce7b729da835868cea75532efe8d2c",
+    "noisy_pairs-s2026": "201ad12fae83046ecd56fd551253194e107e2e9aad71c4dd43c3ecc9f016fcc6",
+    "noisy_pairs-s42": "27bbe1f7456cc3096400eb48d5895dabf27770babe4ff6a8744110679853a998",
+    "parity3-s137": "04761bcadcc499aa86bf5418bc49765f4d6ce393e777d755c9a5d4e36dfc2120",
+    "parity3-s2026": "a47853cd593a24181bb0eef5066518845275602dc8eb3892ac0a95e80c733f65",
+    "parity3-s42": "08ddfaebb53722cbb9c9334922d12f6ec00d07c9bf8882463ea4ae9142d1c85d",
+    "parity4-s137": "e0d65aa26ee38512ef94617184bdf5c4e125d37f7d58154c0df2a088aee89bf2",
+    "parity4-s2026": "fca91329002ba6a0864f33a1a625b0a36a1268bb829cc46698f6fb54ad139fb0",
+    "parity4-s42": "d53f92e969d22423197ea0e8107746174b82ac525416f9a7fe2d5e97ef7117e7",
+    "shuffled_pairs-s137": "0d00cdadf6d06d5bce0408e354d692b06b6224ab8205adb236203393e071849f",
+    "shuffled_pairs-s2026": "2d25e14fcc2fad35c207a480b70ad6b796872f02140d075c71c2e260941eb756",
+    "shuffled_pairs-s42": "e3b155cf07a0b4447dba9cffaaf07450104d18c4302608282aae88a1d11a11cb"
+  },
+  "expected_jobs": 15,
+  "failed": {
+    "shuffled_pairs-s137": [
+      {
+        "topology": "path_bridges",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 192, in run_record\n    deployed = deploy(spec, fit[\"parameters\"], device, config, seed + 3109)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 131, in deploy\n    close(p, ideal, \"Noiseless routed distribution\")\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\generalization_audit.py\", line 31, in close\n    require(np.allclose(actual, expected, atol=1e-11, rtol=0), f\"Mismatch: {label}\")\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\audit.py\", line 17, in require\n    raise ValueError(message)\nValueError: Mismatch: Noiseless routed distribution\n"
+      },
+      {
+        "topology": "hub_bridges",
+        "traceback": "Traceback (most recent call last):\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 192, in run_record\n    deployed = deploy(spec, fit[\"parameters\"], device, config, seed + 3109)\n               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\routing_controls.py\", line 131, in deploy\n    close(p, ideal, \"Noiseless routed distribution\")\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\generalization_audit.py\", line 31, in close\n    require(np.allclose(actual, expected, atol=1e-11, rtol=0), f\"Mismatch: {label}\")\n  File \"C:\\Users\\mosta\\workspace\\quantum-generative-learning\\src\\qgen\\audit.py\", line 17, in require\n    raise ValueError(message)\nValueError: Mismatch: Noiseless routed distribution\n"
+      }
+    ]
+  }
+}

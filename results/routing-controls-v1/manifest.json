@@ -1,0 +1,81 @@
+{
+  "config": {
+    "compiled_probability_atol": 1e-08,
+    "conditions": [
+      "adjacent_pairs",
+      "shuffled_pairs",
+      "noisy_pairs",
+      "parity3",
+      "parity4"
+    ],
+    "devices": [
+      "line",
+      "ring",
+      "star"
+    ],
+    "errors": [
+      0.0,
+      0.005,
+      0.02
+    ],
+    "evaluation_shots": 2048,
+    "learning_rate": 0.03,
+    "masks_per_step": 64,
+    "n_qubits": 6,
+    "optimization_level": 3,
+    "priority_fraction": 0.5,
+    "samples_per_half": 64,
+    "seeds": [
+      42,
+      137,
+      2026
+    ],
+    "test_size": 1024,
+    "topologies": [
+      "path_bridges",
+      "hub_bridges"
+    ],
+    "train_size": 512,
+    "transpiler_seed": 17,
+    "updates": 1600,
+    "version": "routing-controls-v1"
+  },
+  "config_sha256": "7142e2cb6364dc30d150d9954f4ca3e5bc0110e70cdc828d97b637b146bdbd84",
+  "created_utc": "2026-11-11T20:19:29.693583+00:00",
+  "frozen_files": {
+    "config.json": "4e6c9cb86fab374d92e59454514353007a688367d8bfebf2218b46d6a284d51a",
+    "protocol.md": "a7bbef65ed636190d6d8d36298c01150859a15800f4e6af1e7e8a4918b57be48",
+    "uv.lock": "a8a8752b97cf6491783eea0522e38a2e45a59fb653bfd92b235d9381f1e49d6e"
+  },
+  "platform": "Windows-10-10.0.26300-SP0",
+  "python": "3.11.15",
+  "reference_index_sha256": "c7605f6696018f5f262fb2c182bd167a0cf780dab791b8b6f6f9f347f9391cea",
+  "source": {
+    "files": {
+      "__init__.py": "f69ce7b6e4d5de5ffccee83c767a7deeae288d77dabe0e5ce3c0e55eee2bd8f8",
+      "audit.py": "7a4e2dde4036056d0d022a0cea02651ab0c1e7b61ab0b9537ad46468923d826d",
+      "circuits.py": "0d9a0f9f7da8aedfa61ce4d434bc30923cb7ec6615493afd6b640fbeda2762a8",
+      "cli.py": "07aae8e8d4aa1d812c22486bbe0f117ebe8340e6708676ced37398303f95a23d",
+      "data.py": "588636b6822852270f6a202cdae4794912c3790ea265bc1048d56fd08973ba6d",
+      "deployment.py": "351ca30e90b0079f53167fc99476a12490704a535671b7d05b5fd3d0928019b8",
+      "diagnostics.py": "81510aa30c54537672deeb79a6b98f9f73b1873117d90e8b80d7fffb8b9ed5f6",
+      "experiment.py": "ecfbceefc0bd4145e4a0e001acf0145d4f59bde7194b312a754084e0745cfac0",
+      "generalization.py": "ca9a5d3ad8ca77c9ff27f794f00a440f9b74972d576087ed349a426b7784627f",
+      "generalization_audit.py": "2da718eb96042fdf6ab147f6157f90c40fe72d6474db28f0a76d4e5c5ba51b17",
+      "iqp.py": "176738e8a024fc0a5d39af1a2cc7ead3727c325944299bf892b2957135259b9f",
+      "metrics.py": "3e0e78f0fce679df5a510afdf91d21abd083e43c7bf2949e3f0d80673d43b08a",
+      "report.py": "f79cbbf4b369380141586e7efd978fa3e02d0bc6f8d0570e4da7047c01bb9a39",
+      "routing_controls.py": "d931a2650e2d98dde82222a296c9d43a892c715e0c0bfcb7c3577124575b6ad4",
+      "scaling.py": "274f4f6fdab1869658ca9e2e2c833caee415eea84f16de7baf4028d0919897d1",
+      "training.py": "513d9d5b80d946b54ed341da09bd66bb7d48bea85ce6a87c55b522f736346754"
+    },
+    "sha256": "30f303c85e874f5d49eedb55bca2012a40ea5d54c96e4761c6d7d854a5191ddb"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "qiskit": "2.6.1",
+    "qiskit-aer": "0.18.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  }
+}
