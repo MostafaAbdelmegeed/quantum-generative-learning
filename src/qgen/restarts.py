@@ -427,7 +427,12 @@ def audit(output, replay=False):
             )
             close(record["training_marginals"], means, "marginals")
             initials = initialization_vectors(spec, means, seed, config)
-            require(initials == record["initializations"], "Initializations mismatch")
+            require(
+                initials.keys() == record["initializations"].keys(),
+                "Initialization families mismatch",
+            )
+            for family, angles in initials.items():
+                close(record["initializations"][family], angles, "initializations")
             selection = selection_record(train, config)
             selection["order_penalized"] = select_order_penalized(train, config)
             require(

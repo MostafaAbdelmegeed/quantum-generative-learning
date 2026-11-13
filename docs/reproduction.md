@@ -67,7 +67,7 @@ Both complete series reproduced every record from archived source in the recorde
 
 The diagnostic auditor reconstructs the added classical model's probabilities from its saved parameters and training-selected feature masks. Repeating its L-BFGS-B fit belongs to `--replay`: a fresh Ubuntu fit did not match the Windows parameter vector within 1e-11, even with pinned package versions. Ordinary audits retain the 1e-11 tolerance for reconstructed probabilities and metrics. Archived source and result bytes are unchanged.
 
-CI runs saved-result audits and numerical tests on both Windows and Ubuntu. Exact routing compilation and simulation replay runs on Windows, the archive's original platform. Ubuntu reached the compilation comparison but produced different compilation metadata, which includes the complete QASM text. This platform restriction leaves the strict replay check intact; it does not assert identical compiled circuits across operating systems.
+CI runs saved-result audits and numerical tests on both Windows and Ubuntu. Full optimizer, compilation and simulation replay remains a separate command with archived receipts from the original environment. Hosted Ubuntu produced different compilation metadata, and hosted Windows differed from saved optimizer parameters despite another Windows job passing. Matching the operating system and package versions alone is insufficient for strict replay. These failures are retained in GitHub Actions; the replay command's strict checks are unchanged.
 
 ## Initialization and restart follow-up
 
@@ -81,6 +81,8 @@ uv run --locked python scripts/build_restarts_report.py --series results/initial
 The runner requires a fresh directory and copies the original diagnostic references. Each of the 360 policies receives 1,600 gradient updates, split into one run or four independent starts. Candidate selection sees only final training loss. Auditing checks every candidate's probabilities, samples, metrics, initialization and resource count; `--replay` repeats all 900 fits. It also checks exact agreement with 120 previously published fits. The [source-replay receipt](verification/initialization-restarts-v1-replay.json) records agreement for all 15 records apart from elapsed times in the recorded Windows environment.
 
 The [results report](initialization-restarts-results.md) explains the initialization effects and the extra diagnostic and evaluation work required by restarts. The [tables](initialization-restarts-tables.md) retain all configurations and paired differences.
+
+The current auditor compares regenerated initialization angles with the existing 1e-11 numerical tolerance. The frozen source used exact list equality, which failed on Ubuntu for these floating-point calculations. The complete source replay still requires exact record equality apart from timings; its successful receipt applies to the original recorded environment.
 
 ## Audit saved results
 

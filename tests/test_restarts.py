@@ -109,7 +109,7 @@ def test_unequal_allocations_rejected(config):
         validate_config(config)
 
 
-@pytest.mark.parametrize("corruption", ["selection", "resources"])
+@pytest.mark.parametrize("corruption", ["selection", "resources", "initialization"])
 def test_archive_replay_and_semantic_corruption_rejection(config, tmp_path, corruption):
     config.update(
         conditions=["parity4"],
@@ -126,13 +126,25 @@ def test_archive_replay_and_semantic_corruption_rejection(config, tmp_path, corr
     assert report["policies_checked"] == 24
     result_path = output / "runs/parity4-s42.json"
     record = json.loads(result_path.read_text())
+    original = record["initializations"]["marginal_product"][0][0]
+    record["initializations"]["marginal_product"][0][0] = float(
+        np.nextafter(original, np.inf)
+    )
+    write_json(result_path, record)
+    index = json.loads((output / "index.json").read_text())
+    index["completed"]["parity4-s42"] = file_digest(result_path)
+    write_json(output / "index.json", index)
+    assert audit(output)["passed"]
     policy = next(p for p in record["policies"] if p["allocation"] == "restarts")
     if corruption == "selection":
         policy["selected_candidate"] = (policy["selected_candidate"] + 1) % 4
         message = "Training-only selection"
-    else:
+    elif corruption == "resources":
         policy["resources"]["gradient_updates"] += 1
         message = "Policy resource"
+    else:
+        record["initializations"]["marginal_product"][0][0] += 1e-3
+        message = "initializations"
     write_json(result_path, record)
     index = json.loads((output / "index.json").read_text())
     index["completed"]["parity4-s42"] = file_digest(result_path)
