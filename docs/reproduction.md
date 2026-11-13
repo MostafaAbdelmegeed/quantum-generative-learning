@@ -67,6 +67,8 @@ Both complete series reproduced every record from archived source in the recorde
 
 The diagnostic auditor reconstructs the added classical model's probabilities from its saved parameters and training-selected feature masks. Repeating its L-BFGS-B fit belongs to `--replay`: a fresh Ubuntu fit did not match the Windows parameter vector within 1e-11, even with pinned package versions. Ordinary audits retain the 1e-11 tolerance for reconstructed probabilities and metrics. Archived source and result bytes are unchanged.
 
+CI runs saved-result audits and numerical tests on both Windows and Ubuntu. Exact routing compilation and simulation replay runs on Windows, the archive's original platform. Ubuntu reached the compilation comparison but produced different compilation metadata, which includes the complete QASM text. This platform restriction leaves the strict replay check intact; it does not assert identical compiled circuits across operating systems.
+
 ## Initialization and restart follow-up
 
 ```bash
