@@ -32,3 +32,4 @@ jobs:
       - run: uv run --locked python -m qgen.diagnostics audit --output results/observable-diagnostics-v1
       - run: uv run --locked python -m qgen.routing_controls audit --output results/routing-controls-v1
       - run: uv run --locked python -m qgen.restarts audit --output results/initialization-restarts-v1
+      - run: uv run --locked python -m qgen.restarts audit --output results/initialization-replication-v1

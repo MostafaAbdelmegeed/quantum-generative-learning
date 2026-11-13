@@ -84,6 +84,21 @@ The [results report](initialization-restarts-results.md) explains the initializa
 
 The current auditor compares regenerated initialization angles with the existing 1e-11 numerical tolerance. The frozen source used exact list equality, which failed on Ubuntu for these floating-point calculations. The complete source replay still requires exact record equality apart from timings; its successful receipt applies to the original recorded environment.
 
+## Untouched-seed initialization replication
+
+```bash
+uv run --locked python -m qgen.restarts run --config config/initialization-replication-v1.json --output artifacts/initialization-replication-new
+uv run --locked python -m qgen.restarts audit --output artifacts/initialization-replication-new --replay
+uv run --locked python scripts/replay_generalization.py --snapshot results/initialization-replication-v1 --output artifacts/initialization-replication-source-new
+uv run --locked python scripts/build_replication_report.py --series results/initialization-replication-v1 --destination docs
+```
+
+The replication uses ten new seeds and the original policy settings. It refits all seven learned classical controls on each new training sample and stores them directly in the records. The known-target oracle is an evaluation reference. No reference directory is needed for this configuration.
+
+The replay audit repeats 3,000 circuit fits and checks 400 fresh classical/reference distributions, including refitting the 350 learned controls. Saved-result audits check regenerated data, selectors, initializations, circuit probabilities, classical feature masks and available parameters, metrics, samples and budgets. The complete source replay reruns both circuit training and classical fitting. The [protocol](initialization-replication-protocol.md) fixes the primary comparison and descriptive replication criterion before outcomes; the [report](initialization-replication-results.md) keeps the old discovery seeds separate.
+
+All 50 replication records reproduced exactly apart from timings in the recorded Windows environment. The [source-replay receipt](verification/initialization-replication-v1-replay.json) preserves the comparison, and the [configuration receipt](verification/initialization-replication-controls.json) records the unchanged settings and disjoint seeds.
+
 ## Audit saved results
 
 ```bash

@@ -107,6 +107,8 @@ The [360-fit diagnostic study](docs/observable-diagnostics-results.md) tests a p
 
 The [900-fit initialization study](docs/initialization-restarts-results.md) finds a strong interaction between starting parameters and loss. With order-penalized weighting, small near-identity starts reduce mean adjacent-pair TVD from 0.3429 to 0.0269 at the same update budget. Restarts help many poor uniform starts but improve TVD in only 89 of 180 paired comparisons. Every restart is selected by training loss, and all candidates remain archived.
 
+The [ten-seed replication](docs/initialization-replication-results.md) retains those settings across 3,000 new circuit fits. Three-bit parity TVD falls from 0.4343 to 0.0477 with near-identity starts, improving nine of ten seeds and meeting the frozen criterion. Noisy pairs also meet it. The four-bit parity gain does not persist, and the classical comparison remains mixed. All new classical controls are refitted on the new data.
+
 ## References and citation
 
 1. Liu and Wang (2018). *Differentiable learning of quantum circuit Born machines.* [arXiv:1804.04168](https://arxiv.org/abs/1804.04168).

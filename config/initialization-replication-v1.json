@@ -1,0 +1,23 @@
+{
+  "version": "initialization-replication-v1",
+  "n_qubits": 6,
+  "conditions": ["adjacent_pairs", "shuffled_pairs", "noisy_pairs", "parity3", "parity4"],
+  "seeds": [1001, 1002, 1003, 1004, 1005, 1006, 1007, 1008, 1009, 1010],
+  "excluded_seeds": [42, 137, 2026],
+  "fresh_classical": true,
+  "losses": ["multiscale", "pair", "higher", "order_penalized"],
+  "initializations": ["uniform", "near_identity", "marginal_product"],
+  "allocations": {"single": [1600], "restarts": [400, 400, 400, 400]},
+  "total_updates": 1600,
+  "near_identity_std": 0.1,
+  "marginal_product_std": 0.05,
+  "train_size": 512,
+  "test_size": 1024,
+  "learning_rate": 0.03,
+  "priority_fraction": 0.5,
+  "selected_count": 3,
+  "maximum_order": 4,
+  "evaluation_shots": 2048,
+  "classical_maxiter": 300,
+  "classical_l2": 0.0001
+}

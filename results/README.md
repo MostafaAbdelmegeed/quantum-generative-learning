@@ -1,6 +1,6 @@
 # Experiment archive
 
-The seven published baseline series contain 153 records. Four complete follow-up series add 60 records, bringing the successful archive to eleven series and 213 records. Two incomplete routing attempts are retained separately. Each series uses seeds 42, 137 and 2026. A record is one configured job, not one fitted model; the contents per record differ across series.
+The seven published baseline series contain 153 records. Five complete follow-up series add 110 records, bringing the successful archive to twelve series and 263 records. Two incomplete routing attempts are retained separately. The discovery studies use seeds 42, 137 and 2026; the initialization replication uses ten new seeds, 1001–1010. A record is one configured job, not one fitted model; the contents per record differ across series.
 
 | Series | Records | Question | Protocol |
 |---|---:|---|---|
@@ -15,8 +15,9 @@ The seven published baseline series contain 153 records. Four complete follow-up
 | [observable-diagnostics-v1](observable-diagnostics-v1/) | 15 | Four losses, three estimators and two budgets: 360 circuit fits | [Diagnostics](../docs/observable-diagnostics-protocol.md) |
 | [routing-controls-v1](routing-controls-v1/) | 15 | Thirty equal-size circuit fits, 90 compilations and 270 noise evaluations | [Routing controls](../docs/routing-controls-protocol.md) |
 | [initialization-restarts-v1](initialization-restarts-v1/) | 15 | Three starting distributions, two update allocations and 900 candidate fits | [Initialization and restarts](../docs/initialization-restarts-protocol.md) |
+| [initialization-replication-v1](initialization-replication-v1/) | 50 | Ten untouched seeds, 3,000 circuit fits and 350 fresh learned classical controls | [Replication](../docs/initialization-replication-protocol.md) |
 
-The [first routing attempt](routing-controls-attempt1/) and [first retry](routing-controls-attempt2/) each contain 15 attempted job records, including execution failures. They are not counted among the eleven complete series. Their original source, configuration, protocol and failed-job index remain intact. The [numerical-check amendment](../docs/routing-controls-protocol.md#numerical-check-amendment-before-the-retry) explains the failure and final tolerance; a [verification receipt](../docs/verification/routing-attempts.json) confirms that all completed training fits match the final run.
+The [first routing attempt](routing-controls-attempt1/) and [first retry](routing-controls-attempt2/) each contain 15 attempted job records, including execution failures. They are not counted among the twelve complete series. Their original source, configuration, protocol and failed-job index remain intact. The [numerical-check amendment](../docs/routing-controls-protocol.md#numerical-check-amendment-before-the-retry) explains the failure and final tolerance; a [verification receipt](../docs/verification/routing-attempts.json) confirms that all completed training fits match the final run.
 
 Each directory contains:
 
@@ -35,3 +36,5 @@ The follow-up has a separate [report](../docs/observable-generalization-results.
 The [diagnostic](../docs/observable-diagnostics-results.md) and [routing](../docs/routing-controls-results.md) reports have separate figures and machine-readable summaries. Their `reference/` directories preserve the original classical comparison records and provenance hashes. Use `scripts/replay_generalization.py` with any complete follow-up directory to rerun its archived source.
 
 The [initialization and restart report](../docs/initialization-restarts-results.md) adds 360 policies with training-only candidate selection. Its [complete tables](../docs/initialization-restarts-tables.md) and [summary](../docs/initialization-restarts-summary.json) retain every candidate and paired seed difference. The archive includes the original diagnostic references for 120 exact fit comparisons.
+
+The [replication report](../docs/initialization-replication-results.md) tests the same policies on new datasets and starting draws. It stores fresh classical controls inside each record and requires no old-seed reference directory. Its [primary comparisons](../docs/initialization-replication-primary.md) apply the criterion frozen before outcomes; the [complete tables](../docs/initialization-replication-tables.md) retain all policies and seed differences.

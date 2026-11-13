@@ -11,6 +11,7 @@ from qgen.experiment import file_digest, write_json
 from qgen.generalization import make_data, qiskit_state
 from qgen.restarts import (
     audit,
+    fresh_classical,
     initialization_vectors,
     marginal_product_angles,
     run,
@@ -150,4 +151,73 @@ def test_archive_replay_and_semantic_corruption_rejection(config, tmp_path, corr
     index["completed"]["parity4-s42"] = file_digest(result_path)
     write_json(output / "index.json", index)
     with pytest.raises(ValueError, match=message):
+        audit(output)
+
+
+def test_replication_requires_unused_unique_seeds(config):
+    config.update(
+        fresh_classical=True,
+        excluded_seeds=[42, 137, 2026],
+        classical_l2=0.0001,
+        classical_maxiter=300,
+    )
+    with pytest.raises(ValueError, match="excluded seeds"):
+        validate_config(config)
+    config["seeds"] = [909, 909]
+    with pytest.raises(ValueError, match="Duplicate"):
+        validate_config(config)
+
+
+def test_fresh_classical_matches_existing_pipeline(config):
+    from threadpoolctl import threadpool_limits
+
+    from qgen.diagnostics import record_job, select_order_penalized
+    from qgen.generalization import run_record, selection_record, target_and_witness
+
+    config.update(
+        classical_l2=0.0001, classical_maxiter=300, losses=[], update_budgets=[]
+    )
+    with threadpool_limits(limits=1):
+        original = run_record(config, "parity4", 42)
+        reference = record_job(config, "parity4", 42, original)
+    data = reference["data"]
+    train = bit_table(6)[data["train"]].astype(np.int32)
+    selection = selection_record(train, config)
+    selection["order_penalized"] = select_order_penalized(train, config)
+    target, _ = target_and_witness("parity4")
+    with threadpool_limits(limits=1):
+        fits = fresh_classical(data, selection, target, "parity4", 42, config)
+    by_name = {fit["model"]: fit for fit in reference["classical"]}
+    for fit in fits:
+        assert without_times(fit) == without_times(by_name[fit["model"]])
+
+
+def test_fresh_seed_archive_replays_classical_and_rejects_corruption(tmp_path):
+    config = json.loads(
+        (ROOT / "config/initialization-replication-v1.json").read_text()
+    )
+    config.update(
+        seeds=[909],
+        conditions=["parity3"],
+        total_updates=4,
+        allocations={"single": [4], "restarts": [1] * 4},
+    )
+    path = tmp_path / "config.json"
+    write_json(path, config)
+    output = tmp_path / "run"
+    run(path, output, tmp_path / "missing-reference")
+    receipt = audit(output, replay=True)
+    assert receipt["fresh_classical_checked"] == receipt["fresh_classical_replays"] == 8
+    assert receipt["training_replays"] == 60
+    assert receipt["published_fits_reproduced"] == 0
+    assert not (output / "reference").exists()
+    result_path = output / "runs/parity3-s909.json"
+    record = json.loads(result_path.read_text())
+    fit = next(f for f in record["classical"] if f["model"] == "order_penalized_maxent")
+    fit["parameters"][0] += 0.1
+    write_json(result_path, record)
+    index = json.loads((output / "index.json").read_text())
+    index["completed"]["parity3-s909"] = file_digest(result_path)
+    write_json(output / "index.json", index)
+    with pytest.raises(ValueError, match="classical probabilities"):
         audit(output)

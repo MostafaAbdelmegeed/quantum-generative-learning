@@ -36,6 +36,8 @@ FAMILIES = {
 def build(series, destination):
     series, destination = Path(series), Path(destination)
     config = json.loads((series / "manifest.json").read_text())["config"]
+    prefix = config["version"].removesuffix("-v1")
+    seed_count = len(config["seeds"])
     index = json.loads((series / "index.json").read_text())
     audit = json.loads((series / "audit.json").read_text())
     if not audit["passed"] or audit["index_sha256"] != file_digest(
@@ -83,7 +85,14 @@ def build(series, destination):
                         row["allocation"],
                     ].append(row)
         classical.extend(
-            {**identity, "model": fit["model"], **fit["metrics"]}
+            {
+                **identity,
+                "model": fit["model"],
+                **fit["metrics"],
+                "n_parameters": fit["n_parameters"],
+                "training_seconds": fit["training_seconds"],
+                "fit_info": fit.get("fit_info", {}),
+            }
             for fit in record["classical"]
         )
     keys = ["condition", "seed", "loss", "initialization", "allocation"]
@@ -116,7 +125,7 @@ def build(series, destination):
     }
     destination.mkdir(parents=True, exist_ok=True)
     write_json(
-        destination / "initialization-restarts-summary.json",
+        destination / f"{prefix}-summary.json",
         {
             "series": config["version"],
             "audit": audit,
@@ -192,18 +201,18 @@ def build(series, destination):
     fig.text(
         0.05,
         0.015,
-        "Diamonds: three-seed means. Small points: every seed. Restarts selected by training loss. Lower TVD is better.",
+        f"Diamonds: {seed_count}-seed means. Small points: every seed. Restarts selected by training loss. Lower TVD is better.",
     )
     fig.tight_layout(rect=(0, 0.04, 1, 0.96))
     (destination / "figures").mkdir(exist_ok=True)
-    fig.savefig(destination / "figures/initialization-restarts.png", dpi=180)
+    fig.savefig(destination / f"figures/{prefix}.png", dpi=180)
     plt.close(fig)
     lines = [
         "# Initialization and restarts: complete tables",
         "",
-        "Values are mean exact TVD over seeds 42, 137 and 2026. Every policy uses 1,600 gradient updates. The [protocol](initialization-restarts-protocol.md) fixes the starts and training-only selection rule. The [summary JSON](initialization-restarts-summary.json) contains all 360 selected policies, all 900 candidates, secondary metrics and every paired difference.",
+        f"Values are mean exact TVD over {seed_count} seeds: {', '.join(map(str, config['seeds']))}. Every policy uses 1,600 gradient updates. The [protocol]({prefix}-protocol.md) fixes the starts and training-only selection rule. The [summary JSON]({prefix}-summary.json) contains all {len(rows):,} selected policies, all {len(candidates):,} candidates, secondary metrics and every paired difference.",
         "",
-        "![All losses and initializations under single and restart allocations, including every seed.](figures/initialization-restarts.png)",
+        f"![All losses and initializations under single and restart allocations, including every seed.](figures/{prefix}.png)",
         "",
     ]
     for family in config["initializations"]:
@@ -260,8 +269,10 @@ def build(series, destination):
             "",
             "Negative values favor the first policy. Differences are paired on dataset seed, loss and the settings not being varied.",
             "",
-            "| Condition | Loss | Initialization | Allocation | Seed 42 | Seed 137 | Seed 2026 |",
-            "|---|---|---|---|---:|---:|---:|",
+            "| Condition | Loss | Initialization | Allocation | "
+            + " | ".join(f"Seed {seed}" for seed in config["seeds"])
+            + " |",
+            "|---|---|---|---|" + "---:|" * seed_count,
         ]
         paired = defaultdict(dict)
         for row in differences:
@@ -278,16 +289,22 @@ def build(series, destination):
                 + " | ".join(f"{values[seed]:+.4f}" for seed in config["seeds"])
                 + " |"
             )
+    verification = f"The audit checked {audit['policies_checked']} policies and {audit['candidates_checked']} candidates and replayed {audit['training_replays']} circuit fits. "
+    if config.get("fresh_classical", False):
+        verification += f"It checked {audit['fresh_classical_checked']} fresh classical/reference distributions and replayed {audit['fresh_classical_replays']} of them, including the known-target oracle references. "
+    else:
+        verification += (
+            f"It reproduced {audit['published_fits_reproduced']} published fits. "
+        )
     lines += [
         "",
         "## Verification",
         "",
-        f"The audit checked {audit['policies_checked']} policies and {audit['candidates_checked']} candidates, replayed {audit['training_replays']} fits and reproduced {audit['published_fits_reproduced']} published fits. The single and restart policies use 6,561,792 and 6,586,368 phase evaluations including objective diagnostics. All candidates receive 2,048 evaluation samples; this evaluation work is separate from training.",
+        verification
+        + "The single and restart policies use 6,561,792 and 6,586,368 phase evaluations including objective diagnostics. All candidates receive 2,048 evaluation samples; this evaluation work is separate from training.",
         "",
     ]
-    (destination / "initialization-restarts-tables.md").write_text(
-        "\n".join(lines), encoding="utf-8"
-    )
+    (destination / f"{prefix}-tables.md").write_text("\n".join(lines), encoding="utf-8")
 
 
 if __name__ == "__main__":

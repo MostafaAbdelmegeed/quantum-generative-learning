@@ -1,0 +1,11 @@
+{
+  "candidates_checked": 3000,
+  "fresh_classical_checked": 400,
+  "fresh_classical_replays": 400,
+  "index_sha256": "f1d7127a6753ff9b853746adbd63d95a34814f9a4394a669c4eb6693de0d2baa",
+  "jobs": 50,
+  "passed": true,
+  "policies_checked": 1200,
+  "published_fits_reproduced": 0,
+  "training_replays": 3000
+}

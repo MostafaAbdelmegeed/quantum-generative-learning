@@ -14,6 +14,7 @@ Start with the [results report](results.md) for the measured outcomes, or the [m
 | [Observable diagnostics](observable-diagnostics-results.md) | Order penalties, longer budgets and fully enumerated gradients; 360 fits |
 | [Routing controls](routing-controls-results.md) | Equal-size expressible circuits, three device graphs and 270 simulated noise evaluations |
 | [Initialization and restarts](initialization-restarts-results.md) | Three starting distributions and two allocations of 1,600 updates; 900 candidate fits |
+| [Untouched-seed replication](initialization-replication-results.md) | Ten new seeds, 3,000 circuit fits and the frozen initialization comparison |
 | [Results report](results.md) | Classical baselines, every experiment family and limits of the conclusions |
 | [IQP method notes](iqp-method-notes.md) | Derivations, implementation conventions and pinned upstream references |
 | [Work plan](plan.md) | Completed work and remaining research questions |

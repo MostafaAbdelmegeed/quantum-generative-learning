@@ -1,0 +1,92 @@
+{
+  "discovery_config_sha256": "927f5953991b56c5aa22abe2a8c14f2925c9a593b24ba040b0194fba062dd1ee",
+  "overlap": [],
+  "passed": true,
+  "prior_config_seeds": {
+    "connectivity-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "initialization-restarts-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "iqp-mc-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "observable-diagnostics-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "observable-generalization-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "reproduction-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "reproduction-v2.json": [
+      42,
+      137,
+      2026
+    ],
+    "routing-controls-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "scaling-pairs-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "scaling-v1.json": [
+      42,
+      137,
+      2026
+    ],
+    "shots-v1.json": [
+      42,
+      137,
+      2026
+    ]
+  },
+  "replication_config_sha256": "b03be12d4502f4782f8a49e093cb8811c5b0a9bc491026a25ce2acf75b52dc9f",
+  "replication_seeds": [
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010
+  ],
+  "unchanged_fields": [
+    "n_qubits",
+    "conditions",
+    "losses",
+    "initializations",
+    "allocations",
+    "total_updates",
+    "near_identity_std",
+    "marginal_product_std",
+    "train_size",
+    "test_size",
+    "learning_rate",
+    "priority_fraction",
+    "selected_count",
+    "maximum_order",
+    "evaluation_shots"
+  ]
+}

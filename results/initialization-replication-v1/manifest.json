@@ -1,0 +1,104 @@
+{
+  "config": {
+    "allocations": {
+      "restarts": [
+        400,
+        400,
+        400,
+        400
+      ],
+      "single": [
+        1600
+      ]
+    },
+    "classical_l2": 0.0001,
+    "classical_maxiter": 300,
+    "conditions": [
+      "adjacent_pairs",
+      "shuffled_pairs",
+      "noisy_pairs",
+      "parity3",
+      "parity4"
+    ],
+    "evaluation_shots": 2048,
+    "excluded_seeds": [
+      42,
+      137,
+      2026
+    ],
+    "fresh_classical": true,
+    "initializations": [
+      "uniform",
+      "near_identity",
+      "marginal_product"
+    ],
+    "learning_rate": 0.03,
+    "losses": [
+      "multiscale",
+      "pair",
+      "higher",
+      "order_penalized"
+    ],
+    "marginal_product_std": 0.05,
+    "maximum_order": 4,
+    "n_qubits": 6,
+    "near_identity_std": 0.1,
+    "priority_fraction": 0.5,
+    "seeds": [
+      1001,
+      1002,
+      1003,
+      1004,
+      1005,
+      1006,
+      1007,
+      1008,
+      1009,
+      1010
+    ],
+    "selected_count": 3,
+    "test_size": 1024,
+    "total_updates": 1600,
+    "train_size": 512,
+    "version": "initialization-replication-v1"
+  },
+  "config_sha256": "47c1b67c2b753307be8e29789eb81a9709edc084a82f0933f05226d18bba2a64",
+  "created_utc": "2026-11-13T11:38:36.613353+00:00",
+  "frozen_files": {
+    "config.json": "b03be12d4502f4782f8a49e093cb8811c5b0a9bc491026a25ce2acf75b52dc9f",
+    "protocol.md": "eb1debb450a9ac8948f0b733eca9f4012dd8443b10b7cd0bd8bbbc990953fc93",
+    "uv.lock": "a8a8752b97cf6491783eea0522e38a2e45a59fb653bfd92b235d9381f1e49d6e"
+  },
+  "platform": "Windows-10-10.0.26300-SP0",
+  "python": "3.11.15",
+  "source": {
+    "files": {
+      "__init__.py": "f69ce7b6e4d5de5ffccee83c767a7deeae288d77dabe0e5ce3c0e55eee2bd8f8",
+      "audit.py": "7a4e2dde4036056d0d022a0cea02651ab0c1e7b61ab0b9537ad46468923d826d",
+      "circuits.py": "0d9a0f9f7da8aedfa61ce4d434bc30923cb7ec6615493afd6b640fbeda2762a8",
+      "cli.py": "07aae8e8d4aa1d812c22486bbe0f117ebe8340e6708676ced37398303f95a23d",
+      "data.py": "588636b6822852270f6a202cdae4794912c3790ea265bc1048d56fd08973ba6d",
+      "deployment.py": "351ca30e90b0079f53167fc99476a12490704a535671b7d05b5fd3d0928019b8",
+      "diagnostics.py": "3960b929580903aaf51cdb178e7aed9f823d19bc94ed8ff0f59f38aa361f48bc",
+      "experiment.py": "ecfbceefc0bd4145e4a0e001acf0145d4f59bde7194b312a754084e0745cfac0",
+      "generalization.py": "ca9a5d3ad8ca77c9ff27f794f00a440f9b74972d576087ed349a426b7784627f",
+      "generalization_audit.py": "2da718eb96042fdf6ab147f6157f90c40fe72d6474db28f0a76d4e5c5ba51b17",
+      "iqp.py": "176738e8a024fc0a5d39af1a2cc7ead3727c325944299bf892b2957135259b9f",
+      "metrics.py": "3e0e78f0fce679df5a510afdf91d21abd083e43c7bf2949e3f0d80673d43b08a",
+      "replication_analysis.py": "faf3a9c33d9fe8d786f3a7899d3cb6337bec3020f3739f6ac4e1b90c16d6db7d",
+      "report.py": "f79cbbf4b369380141586e7efd978fa3e02d0bc6f8d0570e4da7047c01bb9a39",
+      "restarts.py": "2ee4711ed3f5b6deb604bf0ad388b2ae0b69af5f67a3351402620ae6aa822cfc",
+      "routing_controls.py": "d931a2650e2d98dde82222a296c9d43a892c715e0c0bfcb7c3577124575b6ad4",
+      "scaling.py": "274f4f6fdab1869658ca9e2e2c833caee415eea84f16de7baf4028d0919897d1",
+      "training.py": "513d9d5b80d946b54ed341da09bd66bb7d48bea85ce6a87c55b522f736346754"
+    },
+    "sha256": "8c3c6fb0235e33f52eec6d981711cf5798a40aeaa099a07e948e49b90c9bd2ee"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "qiskit": "2.6.1",
+    "qiskit-aer": "0.18.0",
+    "scikit-learn": "1.9.1",
+    "scipy": "1.17.1"
+  }
+}

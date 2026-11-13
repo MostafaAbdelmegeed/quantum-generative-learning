@@ -12,6 +12,7 @@ from pathlib import Path
 from time import perf_counter
 
 import numpy as np
+from scipy.special import logsumexp
 from threadpoolctl import threadpool_limits
 
 from .audit import require
@@ -26,7 +27,9 @@ from .experiment import (
     write_json,
 )
 from .generalization import (
+    candidate_masks,
     evaluate_fit,
+    fit_loglinear,
     make_data,
     objective_kernel,
     qiskit_state,
@@ -34,7 +37,124 @@ from .generalization import (
     target_and_witness,
 )
 from .generalization_audit import close
-from .training import initial_parameters
+from .iqp import characters
+from .training import fit_classical, initial_parameters
+
+
+def classical_masks(selection, config):
+    singles = np.eye(6, dtype=np.int32)
+    return {
+        "selected_maxent": np.vstack([singles, selection["higher"]["masks"]]),
+        "order4_maxent": candidate_masks(6, 1, config["maximum_order"]),
+        "order_penalized_maxent": np.vstack(
+            [singles, selection["order_penalized"]["masks"]]
+        ),
+    }
+
+
+def fresh_classical(data, selection, target, condition, seed, config):
+    train = bit_table(6)[data["train"]].astype(np.int32)
+    heldout = probabilities_from_samples(np.array(data["heldout"]), 6)
+    fits = fit_classical(np.array(data["train"]), 6, seed)
+    for name, masks in classical_masks(selection, config).items():
+        fits.append(fit_loglinear(train, masks, config, name))
+    fits.append(
+        {
+            "model": "oracle_target",
+            "probabilities": target.tolist(),
+            "n_parameters": 0,
+            "training_seconds": 0,
+            "fit_info": {"informed": True},
+        }
+    )
+    for fit in fits:
+        evaluate_fit(
+            fit, target, heldout, condition, config["evaluation_shots"], seed + 3109
+        )
+    return fits
+
+
+def audit_classical(fits, data, selection, target, condition, seed, config, replay):
+    models = {
+        "empirical",
+        "independent",
+        "pairwise",
+        "autoregressive_mlp",
+        "selected_maxent",
+        "order4_maxent",
+        "order_penalized_maxent",
+        "oracle_target",
+    }
+    require(
+        len(fits) == len(models) and {f["model"] for f in fits} == models,
+        "Classical model set mismatch",
+    )
+    masks = classical_masks(selection, config)
+    heldout = probabilities_from_samples(np.array(data["heldout"]), 6)
+    empirical = probabilities_from_samples(np.array(data["train"]), 6)
+    means = bit_table(6)[data["train"]].mean(axis=0)
+    direct = {
+        "empirical": empirical,
+        "independent": np.prod(np.where(bit_table(6), means, 1 - means), axis=1),
+        "oracle_target": target,
+    }
+    reruns = (
+        {
+            f["model"]: f
+            for f in fresh_classical(data, selection, target, condition, seed, config)
+        }
+        if replay
+        else {}
+    )
+    for fit in fits:
+        name = fit["model"]
+        p = np.asarray(fit["probabilities"])
+        require(
+            p.shape == (64,)
+            and np.all(np.isfinite(p))
+            and np.all(p >= 0)
+            and abs(p.sum() - 1) < 1e-11,
+            "Invalid classical distribution",
+        )
+        if name in direct:
+            close(p, direct[name], "classical distribution")
+        if name in masks:
+            close(fit["feature_masks"], masks[name], "classical feature masks")
+            weights = np.asarray(fit["parameters"])
+            require(
+                weights.shape == (len(masks[name]),)
+                and np.all(np.isfinite(weights))
+                and fit["n_parameters"] == len(weights),
+                "Classical parameter mismatch",
+            )
+            logits = characters(bit_table(6), masks[name]) @ weights
+            close(p, np.exp(logits - logsumexp(logits)), "classical probabilities")
+        regenerated = {"probabilities": p.tolist()}
+        evaluate_fit(
+            regenerated,
+            target,
+            heldout,
+            condition,
+            config["evaluation_shots"],
+            seed + 3109,
+        )
+        require(
+            fit["sample_seed"] == seed + 3109
+            and fit["sample_counts"] == regenerated["sample_counts"],
+            "Classical sampling mismatch",
+        )
+        for group in ["metrics", "sample_metrics"]:
+            for metric, value in regenerated[group].items():
+                close(fit[group][metric], value, f"classical {metric}")
+        if replay:
+            close(p, reruns[name]["probabilities"], "Classical training replay")
+            if "parameters" in fit:
+                close(
+                    fit["parameters"],
+                    reruns[name]["parameters"],
+                    "Classical parameter replay",
+                )
+    return len(fits)
 
 
 def marginal_product_angles(spec, means):
@@ -139,12 +259,13 @@ def train_policy(spec, train, seed, config, priority, initializations, allocatio
     }
 
 
-def run_record(config, condition, seed, reference):
+def run_record(config, condition, seed, reference=None):
     spec = make_circuit(6, "iqp", "dense")
     target, witness = target_and_witness(condition)
     close(qiskit_state(spec, witness).probabilities(), target, "expressibility")
     data = make_data(condition, seed, config["train_size"], config["test_size"])
-    require(data == reference["data"], "Reference data mismatch")
+    if reference is not None:
+        require(data == reference["data"], "Reference data mismatch")
     train = bit_table(6)[data["train"]].astype(np.int32)
     heldout = probabilities_from_samples(np.array(data["heldout"]), 6)
     selection = selection_record(train, config)
@@ -165,7 +286,9 @@ def run_record(config, condition, seed, reference):
         "initializations": initials,
         "training_marginals": means.tolist(),
         "initialization_timing": {"seconds": initial_seconds},
-        "classical": reference["classical"],
+        "classical": reference["classical"]
+        if reference is not None
+        else fresh_classical(data, selection, target, condition, seed, config),
         "policies": [],
         "failures": [],
     }
@@ -204,6 +327,19 @@ def run_record(config, condition, seed, reference):
 
 
 def validate_config(config):
+    require(
+        len(config["seeds"]) == len(set(config["seeds"])) and config["seeds"],
+        "Duplicate or empty seeds",
+    )
+    if config.get("fresh_classical", False):
+        require(
+            not set(config["seeds"]) & set(config["excluded_seeds"]),
+            "Replication reuses excluded seeds",
+        )
+        require(
+            config["classical_maxiter"] > 0 and config["classical_l2"] > 0,
+            "Invalid classical fitting settings",
+        )
     require(
         config["n_qubits"] == 6 and config["maximum_order"] == 4,
         "Unsupported dimensions",
@@ -265,6 +401,7 @@ def run(config_path, output, reference):
     config_path, output, reference = Path(config_path), Path(output), Path(reference)
     config = json.loads(config_path.read_text())
     validate_config(config)
+    fresh = config.get("fresh_classical", False)
     output.mkdir(parents=True, exist_ok=False)
     source = source_receipt()
     save_source_snapshot(output, source)
@@ -273,14 +410,24 @@ def run(config_path, output, reference):
     for name, path in [
         ("config.json", config_path),
         ("uv.lock", root / "uv.lock"),
-        ("protocol.md", root / "docs/initialization-restarts-protocol.md"),
+        (
+            "protocol.md",
+            root
+            / "docs"
+            / (
+                "initialization-replication-protocol.md"
+                if fresh
+                else "initialization-restarts-protocol.md"
+            ),
+        ),
     ]:
         shutil.copyfile(path, output / name)
         frozen[name] = file_digest(output / name)
-    ref_index = json.loads((reference / "index.json").read_text())
-    require(not ref_index["failed"], "Reference contains failures")
-    (output / "reference").mkdir()
-    shutil.copyfile(reference / "index.json", output / "reference/index.json")
+    if not fresh:
+        ref_index = json.loads((reference / "index.json").read_text())
+        require(not ref_index["failed"], "Reference contains failures")
+        (output / "reference").mkdir()
+        shutil.copyfile(reference / "index.json", output / "reference/index.json")
     write_json(
         output / "manifest.json",
         {
@@ -289,7 +436,11 @@ def run(config_path, output, reference):
             "config_sha256": digest(config),
             "source": source,
             "frozen_files": frozen,
-            "reference_index_sha256": file_digest(reference / "index.json"),
+            **(
+                {"reference_index_sha256": file_digest(reference / "index.json")}
+                if not fresh
+                else {}
+            ),
             "python": platform.python_version(),
             "platform": platform.platform(),
             "versions": {
@@ -308,21 +459,26 @@ def run(config_path, output, reference):
         for condition in config["conditions"]:
             for seed in config["seeds"]:
                 name = f"{condition}-s{seed}"
-                ref_path = reference / "runs" / f"{name}.json"
-                require(
-                    file_digest(ref_path) == ref_index["completed"][name],
-                    "Reference mismatch",
-                )
-                shutil.copyfile(ref_path, output / "reference" / f"{name}.json")
+                ref_record = None
+                if not fresh:
+                    ref_path = reference / "runs" / f"{name}.json"
+                    require(
+                        file_digest(ref_path) == ref_index["completed"][name],
+                        "Reference mismatch",
+                    )
+                    shutil.copyfile(ref_path, output / "reference" / f"{name}.json")
+                    ref_record = json.loads(ref_path.read_text())
                 try:
                     require(source_receipt() == source, "Source changed during run")
-                    record = run_record(
-                        config, condition, seed, json.loads(ref_path.read_text())
-                    )
+                    record = run_record(config, condition, seed, ref_record)
                     record.update(
                         config_sha256=digest(config),
                         source_sha256=source["sha256"],
-                        reference_sha256=file_digest(ref_path),
+                        **(
+                            {"reference_sha256": file_digest(ref_path)}
+                            if not fresh
+                            else {}
+                        ),
                     )
                     path = output / "runs" / f"{name}.json"
                     write_json(path, record)
@@ -345,6 +501,7 @@ def audit(output, replay=False):
     manifest = json.loads((output / "manifest.json").read_text())
     config = manifest["config"]
     validate_config(config)
+    fresh = config.get("fresh_classical", False)
     require(digest(config) == manifest["config_sha256"], "Config receipt mismatch")
     require(
         digest(manifest["source"]["files"]) == manifest["source"]["sha256"],
@@ -364,12 +521,13 @@ def audit(output, replay=False):
         json.loads((output / "config.json").read_text()) == config,
         "Frozen config mismatch",
     )
-    require(
-        file_digest(output / "reference/index.json")
-        == manifest["reference_index_sha256"],
-        "Reference index mismatch",
-    )
-    ref_index = json.loads((output / "reference/index.json").read_text())
+    if not fresh:
+        require(
+            file_digest(output / "reference/index.json")
+            == manifest["reference_index_sha256"],
+            "Reference index mismatch",
+        )
+        ref_index = json.loads((output / "reference/index.json").read_text())
     index = json.loads((output / "index.json").read_text())
     expected = {f"{c}-s{s}" for c in config["conditions"] for s in config["seeds"]}
     require(
@@ -379,6 +537,7 @@ def audit(output, replay=False):
         "Incomplete run",
     )
     candidates_checked = policies_checked = replays = old_matches = 0
+    classical_checked = classical_replays = 0
     with threadpool_limits(limits=1):
         for name in sorted(expected):
             path = output / "runs" / f"{name}.json"
@@ -391,22 +550,23 @@ def audit(output, replay=False):
                 and record["source_sha256"] == manifest["source"]["sha256"],
                 "Record identity mismatch",
             )
-            ref_path = output / "reference" / f"{name}.json"
-            require(
-                file_digest(ref_path)
-                == ref_index["completed"][name]
-                == record["reference_sha256"],
-                "Reference mismatch",
-            )
-            reference = json.loads(ref_path.read_text())
-            require(
-                record["classical"] == reference["classical"],
-                "Classical reference mismatch",
-            )
+            if not fresh:
+                ref_path = output / "reference" / f"{name}.json"
+                require(
+                    file_digest(ref_path)
+                    == ref_index["completed"][name]
+                    == record["reference_sha256"],
+                    "Reference mismatch",
+                )
+                reference = json.loads(ref_path.read_text())
+                require(
+                    record["classical"] == reference["classical"],
+                    "Classical reference mismatch",
+                )
+                require(record["data"] == reference["data"], "Reference data mismatch")
             data = make_data(condition, seed, config["train_size"], config["test_size"])
             require(
-                data == record["data"] == reference["data"]
-                and digest(data) == record["data_sha256"],
+                data == record["data"] and digest(data) == record["data_sha256"],
                 "Data mismatch",
             )
             train = bit_table(6)[data["train"]].astype(np.int32)
@@ -439,6 +599,19 @@ def audit(output, replay=False):
                 without_times(selection) == without_times(record["selection"]),
                 "Selector mismatch",
             )
+            if fresh:
+                count = audit_classical(
+                    record["classical"],
+                    data,
+                    selection,
+                    target,
+                    condition,
+                    seed,
+                    config,
+                    replay,
+                )
+                classical_checked += count
+                classical_replays += count if replay else 0
             expected_policies = {
                 (loss, family, allocation)
                 for loss in config["losses"]
@@ -545,7 +718,12 @@ def audit(output, replay=False):
                         fit["resources"] == expected_resources,
                         "Candidate budget mismatch",
                     )
-                    if family == "uniform" and candidate == 0 and budget in [400, 1600]:
+                    if (
+                        not fresh
+                        and family == "uniform"
+                        and candidate == 0
+                        and budget in [400, 1600]
+                    ):
                         old = next(
                             f
                             for f in reference["fits"]
@@ -630,6 +808,8 @@ def audit(output, replay=False):
         "candidates_checked": candidates_checked,
         "training_replays": replays,
         "published_fits_reproduced": old_matches,
+        "fresh_classical_checked": classical_checked,
+        "fresh_classical_replays": classical_replays,
         "index_sha256": file_digest(output / "index.json"),
     }
     write_json(output / "audit.json", report)

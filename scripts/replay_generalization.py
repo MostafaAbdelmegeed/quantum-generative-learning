@@ -53,6 +53,10 @@ def replay(snapshot, output):
             "qgen.restarts",
             "initialization-restarts-protocol.md",
         ),
+        "initialization-replication-v1": (
+            "qgen.restarts",
+            "initialization-replication-protocol.md",
+        ),
     }
     module, protocol = routes[manifest["config"]["version"]]
     followup = module != "qgen.generalization"
@@ -83,7 +87,7 @@ def replay(snapshot, output):
             destination = root / (f"docs/{protocol}" if name == "protocol.md" else name)
             shutil.copyfile(snapshot / name, destination)
         reference_args = []
-        if followup:
+        if followup and not manifest["config"].get("fresh_classical", False):
             reference = root / "reference"
             (reference / "runs").mkdir(parents=True)
             if (
