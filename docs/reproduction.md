@@ -65,6 +65,8 @@ Both runners require fresh directories. Diagnostic auditing replays 360 Adam fit
 
 Both complete series reproduced every record from archived source in the recorded Windows environment. See the [diagnostic receipt](verification/observable-diagnostics-v1-replay.json) and [routing receipt](verification/routing-controls-v1-replay.json). This exact-equality claim is separate from numerical portability across operating systems.
 
+The diagnostic auditor reconstructs the added classical model's probabilities from its saved parameters and training-selected feature masks. Repeating its L-BFGS-B fit belongs to `--replay`: a fresh Ubuntu fit did not match the Windows parameter vector within 1e-11, even with pinned package versions. Ordinary audits retain the 1e-11 tolerance for reconstructed probabilities and metrics. Archived source and result bytes are unchanged.
+
 ## Initialization and restart follow-up
 
 ```bash

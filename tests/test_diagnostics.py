@@ -91,3 +91,31 @@ def test_diagnostic_archive_and_corruption_rejection(config, tmp_path):
     write_json(output / "index.json", index)
     with pytest.raises(ValueError, match="Phase budget"):
         audit(output)
+
+
+def test_saved_classical_audit_does_not_refit_but_checks_parameters(
+    config, tmp_path, monkeypatch
+):
+    config.update(conditions=["parity4"], seeds=[42], update_budgets=[2])
+    path = tmp_path / "config.json"
+    write_json(path, config)
+    output = tmp_path / "run"
+    reference = Path(__file__).parents[1] / "results/observable-generalization-v1"
+    run(path, output, reference)
+
+    def forbid_refit(*args, **kwargs):
+        raise RuntimeError("Optimizer replay requested")
+
+    monkeypatch.setattr("qgen.diagnostics.fit_loglinear", forbid_refit)
+    assert audit(output)["passed"]
+    with pytest.raises(RuntimeError, match="Optimizer replay requested"):
+        audit(output, replay=True)
+    result_path = output / "runs/parity4-s42.json"
+    record = json.loads(result_path.read_text())
+    record["classical"][-1]["parameters"][0] += 0.1
+    write_json(result_path, record)
+    index = json.loads((output / "index.json").read_text())
+    index["completed"]["parity4-s42"] = file_digest(result_path)
+    write_json(output / "index.json", index)
+    with pytest.raises(ValueError, match="classical probabilities"):
+        audit(output)

@@ -11,6 +11,7 @@ from pathlib import Path
 from time import perf_counter
 
 import numpy as np
+from scipy.special import logsumexp
 from threadpoolctl import threadpool_limits
 
 from .audit import require
@@ -440,9 +441,27 @@ def audit(output, replay=False):
             masks = np.vstack(
                 [np.eye(6, dtype=np.int32), selection["order_penalized"]["masks"]]
             )
-            refit = fit_loglinear(train, masks, config, "order_penalized_maxent")
-            for key in ["parameters", "probabilities", "feature_masks"]:
-                close(extra[key], refit[key], f"classical {key}")
+            require(
+                extra["model"] == "order_penalized_maxent"
+                and extra["n_parameters"] == len(masks),
+                "Classical model mismatch",
+            )
+            close(extra["feature_masks"], masks, "classical feature masks")
+            weights = np.asarray(extra["parameters"], dtype=float)
+            require(
+                weights.shape == (len(masks),) and np.all(np.isfinite(weights)),
+                "Invalid classical parameters",
+            )
+            logits = characters(bit_table(6), masks) @ weights
+            close(
+                extra["probabilities"],
+                np.exp(logits - logsumexp(logits)),
+                "classical probabilities",
+            )
+            if replay:
+                refit = fit_loglinear(train, masks, config, "order_penalized_maxent")
+                for key in ["parameters", "probabilities", "feature_masks"]:
+                    close(extra[key], refit[key], f"classical replay {key}")
             for fit in record["fits"] + record["classical"]:
                 state = None
                 if "estimator" in fit:
