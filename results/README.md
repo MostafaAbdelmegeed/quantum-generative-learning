@@ -1,6 +1,6 @@
 # Experiment archive
 
-The seven published baseline series contain 153 records. Three complete follow-up series add 45 records, bringing the successful archive to ten series and 198 records. Two incomplete routing attempts are retained separately. Each series uses seeds 42, 137 and 2026. A record is one configured job, not one fitted model; the contents per record differ across series.
+The seven published baseline series contain 153 records. Four complete follow-up series add 60 records, bringing the successful archive to eleven series and 213 records. Two incomplete routing attempts are retained separately. Each series uses seeds 42, 137 and 2026. A record is one configured job, not one fitted model; the contents per record differ across series.
 
 | Series | Records | Question | Protocol |
 |---|---:|---|---|
@@ -14,8 +14,9 @@ The seven published baseline series contain 153 records. Three complete follow-u
 | [observable-generalization-v1](observable-generalization-v1/) | 15 | Shuffled/noisy pairs, higher-order parity and a matched-Adam moment-estimation control | [Observable generalization](../docs/observable-generalization-protocol.md) |
 | [observable-diagnostics-v1](observable-diagnostics-v1/) | 15 | Four losses, three estimators and two budgets: 360 circuit fits | [Diagnostics](../docs/observable-diagnostics-protocol.md) |
 | [routing-controls-v1](routing-controls-v1/) | 15 | Thirty equal-size circuit fits, 90 compilations and 270 noise evaluations | [Routing controls](../docs/routing-controls-protocol.md) |
+| [initialization-restarts-v1](initialization-restarts-v1/) | 15 | Three starting distributions, two update allocations and 900 candidate fits | [Initialization and restarts](../docs/initialization-restarts-protocol.md) |
 
-The [first routing attempt](routing-controls-attempt1/) and [first retry](routing-controls-attempt2/) each contain 15 attempted job records, including execution failures. They are not counted among the ten complete series. Their original source, configuration, protocol and failed-job index remain intact. The [numerical-check amendment](../docs/routing-controls-protocol.md#numerical-check-amendment-before-the-retry) explains the failure and final tolerance; a [verification receipt](../docs/verification/routing-attempts.json) confirms that all completed training fits match the final run.
+The [first routing attempt](routing-controls-attempt1/) and [first retry](routing-controls-attempt2/) each contain 15 attempted job records, including execution failures. They are not counted among the eleven complete series. Their original source, configuration, protocol and failed-job index remain intact. The [numerical-check amendment](../docs/routing-controls-protocol.md#numerical-check-amendment-before-the-retry) explains the failure and final tolerance; a [verification receipt](../docs/verification/routing-attempts.json) confirms that all completed training fits match the final run.
 
 Each directory contains:
 
@@ -32,3 +33,5 @@ These are immutable experiment snapshots. Use an ignored `artifacts/` directory 
 The follow-up has a separate [report](../docs/observable-generalization-results.md), [summary](../docs/observable-generalization-summary.json) and replay command. It also saves its protocol and lockfile beside the manifest. The original explorer and release summary remain scoped to the seven baseline series.
 
 The [diagnostic](../docs/observable-diagnostics-results.md) and [routing](../docs/routing-controls-results.md) reports have separate figures and machine-readable summaries. Their `reference/` directories preserve the original classical comparison records and provenance hashes. Use `scripts/replay_generalization.py` with any complete follow-up directory to rerun its archived source.
+
+The [initialization and restart report](../docs/initialization-restarts-results.md) adds 360 policies with training-only candidate selection. Its [complete tables](../docs/initialization-restarts-tables.md) and [summary](../docs/initialization-restarts-summary.json) retain every candidate and paired seed difference. The archive includes the original diagnostic references for 120 exact fit comparisons.

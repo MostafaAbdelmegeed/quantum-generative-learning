@@ -91,8 +91,14 @@ class FullObjective:
         ) @ jacobian
 
 
-def fit_full(spec, train, seed, config, priority=None):
-    initial = initial_parameters(spec, seed)
+def fit_full(spec, train, seed, config, priority=None, initial=None):
+    initial = (
+        initial_parameters(spec, seed)
+        if initial is None
+        else np.asarray(initial, dtype=float)
+    )
+    if initial.shape != (spec.n_parameters,) or not np.all(np.isfinite(initial)):
+        raise ValueError("Initial angles must be a finite vector matching the circuit")
     theta = initial.copy()
     first, second = np.zeros_like(theta), np.zeros_like(theta)
     objective = FullObjective(spec, train, priority, config["priority_fraction"])

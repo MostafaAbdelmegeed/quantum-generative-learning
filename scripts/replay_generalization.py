@@ -49,6 +49,10 @@ def replay(snapshot, output):
             "qgen.routing_controls",
             "routing-controls-protocol.md",
         ),
+        "initialization-restarts-v1": (
+            "qgen.restarts",
+            "initialization-restarts-protocol.md",
+        ),
     }
     module, protocol = routes[manifest["config"]["version"]]
     followup = module != "qgen.generalization"

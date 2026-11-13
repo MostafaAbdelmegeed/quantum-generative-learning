@@ -89,7 +89,7 @@ The [reproduction guide](docs/reproduction.md) covers all series, archived-sourc
 | Location | Purpose |
 |---|---|
 | [`src/qgen/`](src/qgen/) | Circuit construction, estimation, training, deployment and auditing |
-| [`config/`](config/) | Seven frozen experiment configurations |
+| [`config/`](config/) | Frozen experiment configurations |
 | [`results/`](results/README.md) | Complete records, manifests, source snapshots and checksums |
 | [`tests/`](tests/) | Numerical oracles, estimator checks and corruption checks |
 | [`docs/`](docs/README.md) | Protocols, derivations, results and the offline explorer |
@@ -104,6 +104,8 @@ The [work plan](docs/plan.md) now focuses on separating selector design from opt
 The [six-qubit follow-up](docs/observable-generalization-results.md) now tests shuffled pairs, corrupted pairs and three- and four-bit parity under a frozen 400-update budget. Learned weighting did not reliably improve TVD, and the classical model using the selected features had lower mean TVD in all five conditions. The follow-up preserves 90 circuit fits, 90 learned classical fits and 15 oracle references in a separate [audited archive](results/observable-generalization-v1/). Its exact-moment controls use the same sampled masks and Adam schedule; they expose failures that remain after removing moment-estimation noise.
 
 The [360-fit diagnostic study](docs/observable-diagnostics-results.md) tests a preference for lower-order features, a fourfold update budget and fully deterministic gradients. Improvements remain selective. The [routing study](docs/routing-controls-results.md) compares two expressible 11-parameter families on line, ring and star device graphs, with 270 simulated noise evaluations. Both retain every seed, classical references and documented failures.
+
+The [900-fit initialization study](docs/initialization-restarts-results.md) finds a strong interaction between starting parameters and loss. With order-penalized weighting, small near-identity starts reduce mean adjacent-pair TVD from 0.3429 to 0.0269 at the same update budget. Restarts help many poor uniform starts but improve TVD in only 89 of 180 paired comparisons. Every restart is selected by training loss, and all candidates remain archived.
 
 ## References and citation
 

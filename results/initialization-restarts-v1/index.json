@@ -1,0 +1,21 @@
+{
+  "completed": {
+    "adjacent_pairs-s137": "55c85e8d297d120d9e4739aeb2c095e8be421b4d31aa7e3961b20ccd4eef1e3a",
+    "adjacent_pairs-s2026": "d11c7694a8193a2d72c9a18cc88ac57e64ebada8789518ff4daca599c850a8b0",
+    "adjacent_pairs-s42": "2ec1c237c3283be0de57c5658b1c0932f74592d70c9061bfbe892a6d3247f7ba",
+    "noisy_pairs-s137": "06be6dddbaf7667319d95f280fd5830dfb86066186c05252ee495e828954993d",
+    "noisy_pairs-s2026": "fa0a3ee8e4ea257cfcd692ef857b4ab3850aa6592cd65d1eca985f52a3ca6da0",
+    "noisy_pairs-s42": "c89582ad7f822af239847181aaeb1c08fc1aca580ecbdf62ffdb9f044266ebb3",
+    "parity3-s137": "b1b61b4bb802f55a4da1cdc6157836aaf16a2eeaf773bf3b81c4c03727a9a2f4",
+    "parity3-s2026": "c5335c6bb703fbe7a74a5a03df33bd8364edbf5951320e4a3f87bc2974516276",
+    "parity3-s42": "d0b98cc99a49f268cca176deed7898819064d60f23c36370035b8cb2d3bb6026",
+    "parity4-s137": "1a1488c9a9d15ef767e4eca0f139da1aa27076ceacededbed0c6c08c8a4eb752",
+    "parity4-s2026": "537c5958be0a752b21a20fbc3aedd4b0023b037d30c8c69fe544fdf2e49ca329",
+    "parity4-s42": "4691f901dbce768da9aa1ddd83bece2a5f78786650aa38560fc6444f101806da",
+    "shuffled_pairs-s137": "5b7c13edeb2e514f5de104cceca5b92155d9cdba9f0dd6a02a5ff7254ccc0f67",
+    "shuffled_pairs-s2026": "f55cf01cc04901a452069b0abbea6030ab2a37392e6809a4cef828b985de41da",
+    "shuffled_pairs-s42": "27bc737cb5e25be84678bf1f84ea4069f544c3ba35b3b4487a297653ddeadbd1"
+  },
+  "expected_jobs": 15,
+  "failed": {}
+}

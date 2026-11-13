@@ -65,6 +65,19 @@ Both runners require fresh directories. Diagnostic auditing replays 360 Adam fit
 
 Both complete series reproduced every record from archived source in the recorded Windows environment. See the [diagnostic receipt](verification/observable-diagnostics-v1-replay.json) and [routing receipt](verification/routing-controls-v1-replay.json). This exact-equality claim is separate from numerical portability across operating systems.
 
+## Initialization and restart follow-up
+
+```bash
+uv run --locked python -m qgen.restarts run --output artifacts/initialization-restarts-new
+uv run --locked python -m qgen.restarts audit --output artifacts/initialization-restarts-new --replay
+uv run --locked python scripts/replay_generalization.py --snapshot results/initialization-restarts-v1 --output artifacts/initialization-source-replay-new
+uv run --locked python scripts/build_restarts_report.py --series results/initialization-restarts-v1 --destination docs
+```
+
+The runner requires a fresh directory and copies the original diagnostic references. Each of the 360 policies receives 1,600 gradient updates, split into one run or four independent starts. Candidate selection sees only final training loss. Auditing checks every candidate's probabilities, samples, metrics, initialization and resource count; `--replay` repeats all 900 fits. It also checks exact agreement with 120 previously published fits. The [source-replay receipt](verification/initialization-restarts-v1-replay.json) records agreement for all 15 records apart from elapsed times in the recorded Windows environment.
+
+The [results report](initialization-restarts-results.md) explains the initialization effects and the extra diagnostic and evaluation work required by restarts. The [tables](initialization-restarts-tables.md) retain all configurations and paired differences.
+
 ## Audit saved results
 
 ```bash

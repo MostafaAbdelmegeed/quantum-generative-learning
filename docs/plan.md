@@ -34,7 +34,9 @@ The [diagnostic follow-up](observable-diagnostics-results.md) completed the orde
 
 The [routing study](routing-controls-results.md) completed 30 fits with matched parameter counts and target expressibility, three device layouts and 270 noise evaluations. All fits and deployments were replayed. Two earlier attempts remain archived after numerical compilation checks failed; the protocol records the final verification tolerance.
 
-A remaining local question is initialization and optimizer sensitivity: compare a frozen restart or initialization policy while choosing fits from training criteria only. Keep data, loss, total update budget and classical references fixed. The current studies do not justify increasing width or claiming quantum advantage.
+The [initialization study](initialization-restarts-results.md) completed 900 candidate fits across three initialization families and two allocations of 1,600 updates. Small near-identity starts with order-penalized weighting reduced mean adjacent-pair TVD from 0.3429 to 0.0269 and three-bit parity TVD from 0.2067 to 0.0374. Restart selection used only training loss; across all policies, restarts improved and worsened target TVD equally often. All 900 fits and the full archived source were replayed, and 120 published fits reproduced. The numerical suite passes 78 tests.
+
+The next local question is whether the initialization result persists on untouched dataset seeds. Freeze a replication with the same scales, losses and allocation rules, retaining every policy. Declare the order-penalized near-identity comparison in advance and keep all candidate selection confined to training loss. The current studies do not justify increasing width or claiming quantum advantage.
 
 Publishing and running a physical device are separate release steps. A hardware experiment needs a concrete shot budget and device configuration; the current results do not require one.
 

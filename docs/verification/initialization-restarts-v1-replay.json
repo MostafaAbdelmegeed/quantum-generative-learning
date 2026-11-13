@@ -1,0 +1,25 @@
+{
+  "ignored_fields": [
+    "seconds",
+    "training_seconds"
+  ],
+  "matched_records": [
+    "adjacent_pairs-s137",
+    "adjacent_pairs-s2026",
+    "adjacent_pairs-s42",
+    "noisy_pairs-s137",
+    "noisy_pairs-s2026",
+    "noisy_pairs-s42",
+    "parity3-s137",
+    "parity3-s2026",
+    "parity3-s42",
+    "parity4-s137",
+    "parity4-s2026",
+    "parity4-s42",
+    "shuffled_pairs-s137",
+    "shuffled_pairs-s2026",
+    "shuffled_pairs-s42"
+  ],
+  "passed": true,
+  "source_sha256": "33494425f748ca7ef379ba5d1829f0c57a6030008fe244ffb265d46934977697"
+}

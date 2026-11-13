@@ -1,0 +1,9 @@
+{
+  "candidates_checked": 900,
+  "index_sha256": "ffde6dab1f73f26054548a0f6c958eff23b98894be54392deefacb84221c074a",
+  "jobs": 15,
+  "passed": true,
+  "policies_checked": 360,
+  "published_fits_reproduced": 120,
+  "training_replays": 900
+}
